@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trading Academy - India's Premier Stock Market Trading Education Platform</title>
+  <meta name="description"
+    content="Learn stock market trading from SEBI-registered advisors. Courses from beginner to advanced - technical analysis, derivatives, risk management, and more." />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script src="assets/js/theme.js"></script>
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+  <style>
+    /* Keep Home > Our Courses cards concise and evenly aligned. */
+    #featuredCoursesGrid .tm-home-course-desc {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+      min-height: 3em;
+      margin-bottom: .85rem;
+    }
+    #featuredCoursesGrid .tm-home-course-meta {
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ====""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+     NAVBAR
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""==== -->
+  <nav class="navbar navbar-expand-lg tm-navbar fixed-top" id="mainNavbar">
+    <div class="container">
+      <a class="navbar-brand tm-brand" href="index.html">
+        <img src="assets/img/logo.svg" alt="Trading Academy Logo"
+          style="height:28px; width:28px;"><span>TradingAcademy</span>
+      </a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+        aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav mx-auto gap-1">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Home</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="index.html"><i class="bi bi-house me-2 text-primary"></i>Home Page
+                  1</a></li>
+              <li><a class="dropdown-item" href="home-2.html"><i class="bi bi-house-fill me-2 text-primary"></i>Home
+                  Page 2</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
+          <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
+          <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+        <div class="d-flex align-items-center gap-2 navbar-nav-buttons">
+          <button id="themeToggle" class="btn" aria-label="Toggle dark mode"><i class="bi bi-moon-fill"
+              id="themeIcon"></i></button>
+          <button id="rtlToggle" class="btn" aria-label="Toggle RTL"><i
+              class="bi bi-translate"></i></button>
+          <a href="login.html" class="btn btn-warning btn-sm fw-bold px-3" id="authBtn"><i
+              class="bi bi-person me-1"></i>Login</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ====""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+     HERO
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""==== -->
+  <section class="tm-hero">
+    <div class="container" style="position:relative;z-index:1;">
+      <div class="row align-items-center g-5 justify-content-between">
+        <div class="col-lg-6 text-center">
+          <div class="tm-hero-badge mx-auto"><i class="bi bi-patch-check-fill"></i>SEBI-Registered Mentors</div>
+          <h1 class="mx-auto">Master the Stock Market with <span class="highlight">Expert Guidance</span></h1>
+          <p class="mx-auto" style="max-width: 600px;">India's most comprehensive trading education platform. Learn from certified professionals through
+            structured courses, live classes, and hands-on practice.</p>
+          <div class="d-flex flex-wrap gap-3 justify-content-center">
+            <a href="courses.html" class="btn btn-cta">
+              <i class="bi bi-play-circle me-2"></i>Start Learning Free
+            </a>
+            <a href="about.html" class="btn btn-cta-outline">
+              <i class="bi bi-info-circle me-2"></i>Learn More
+            </a>
+          </div>
+          <div class="d-flex gap-4 mt-4 justify-content-center" style="flex-wrap:wrap;">
+            <div style="font-size:.85rem;color:#94a3b8;"><span
+                style="font-weight:700;color:#f59e0b;font-size:1.1rem;">10K+</span> Students</div>
+            <div style="font-size:.85rem;color:#94a3b8;"><span
+                style="font-weight:700;color:#f59e0b;font-size:1.1rem;">25+</span> Courses</div>
+            <div style="font-size:.85rem;color:#94a3b8;"><span
+                style="font-weight:700;color:#f59e0b;font-size:1.1rem;">95%</span> Success Rate</div>
+          </div>
+        </div>
+        <div class="col-lg-6 text-center mt-5 mt-lg-0">
+          <img src="assets/img/home_hero_premium.jpg" alt="Premium abstract stock market bull"
+            class="tm-hero-img img-fluid" style="aspect-ratio: 3/2; object-fit: cover; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);" width="640" height="420" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+     STATS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""==== -->
+  <section class="tm-stats-section">
+    <div class="container">
+      <div class="row g-4 text-center">
+        <div class="col-6 col-md-3" data-aos>
+          <div class="tm-stat-card">
+            <span class="tm-stat-num" data-counter>10,000+</span>
+            <p class="tm-stat-label"><i class="bi bi-people me-1"></i>Students Enrolled</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3" data-aos>
+          <div class="tm-stat-card">
+            <span class="tm-stat-num" data-counter>25+</span>
+            <p class="tm-stat-label"><i class="bi bi-book me-1"></i>Expert Courses</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3" data-aos>
+          <div class="tm-stat-card">
+            <span class="tm-stat-num" data-counter>95%</span>
+            <p class="tm-stat-label"><i class="bi bi-emoji-smile me-1"></i>Student Satisfaction</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3" data-aos>
+          <div class="tm-stat-card">
+            <span class="tm-stat-num" data-counter>8+</span>
+            <p class="tm-stat-label"><i class="bi bi-calendar-check me-1"></i>Years of Excellence</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+     FEATURED COURSES
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""==== -->
+  <section class="tm-section" id="courses">
+    <div class="container">
+      <div class="tm-section-head" data-aos>
+        <div class="tm-section-badge">Our Courses</div>
+        <h2>Learn Trading at Your Own Pace</h2>
+        <p>From complete beginner to advanced derivatives trader - our structured curriculum covers every aspect of
+          successful market participation.</p>
+      </div>
+      <div class="row g-4" id="featuredCoursesGrid">
+        <!-- Injected by JS -->
+      </div>
+      <div class="text-center mt-4">
+        <a href="courses.html" class="btn btn-primary btn-lg">
+          <i class="bi bi-grid me-2"></i>View All 8 Courses
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+     WHY CHOOSE US
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""==== -->
+  <section class="tm-section" style="background:var(--bg-alt);">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-md-6 mb-4 mb-lg-0" data-aos="fade-right">
+          <img src="assets/img/why_choose_us_premium.jpg" alt="Trading Academy professionals"
+            class="img-fluid rounded-4 shadow-xl" loading="lazy"
+            style="aspect-ratio: 3/2; object-fit: cover; width:100%; height:auto;" />
+        </div>
+        <div class="col-md-6" data-aos="fade-left">
+          <div class="tm-section-badge">Why Trading Academy</div>
+          <h2 class="mb-4">Learn from Real Market Professionals</h2>
+          <div class="tm-feature-item">
+            <div class="tm-feature-icon"><i class="bi bi-patch-check-fill"></i></div>
+            <div class="tm-feature-text">
+              <h5>SEBI-Registered Mentors</h5>
+              <p>All our mentors are SEBI-registered investment advisors or certified financial technicians with real
+                trading track records.</p>
+            </div>
+          </div>
+          <div class="tm-feature-item">
+            <div class="tm-feature-icon"><i class="bi bi-camera-video-fill"></i></div>
+            <div class="tm-feature-text">
+              <h5>Live Weekly Classes</h5>
+              <p>Real-time market analysis and strategy sessions every week. Ask questions and learn from live market
+                conditions.</p>
+            </div>
+          </div>
+          <div class="tm-feature-item">
+            <div class="tm-feature-icon"><i class="bi bi-graph-up-arrow"></i></div>
+            <div class="tm-feature-text">
+              <h5>Mock Portfolio Practice</h5>
+              <p>Practice trading risk-free with our virtual portfolio system before committing real capital to the
+                markets.</p>
+            </div>
+          </div>
+          <div class="tm-feature-item">
+            <div class="tm-feature-icon"><i class="bi bi-award-fill"></i></div>
+            <div class="tm-feature-text">
+              <h5>Industry-Recognized Certificates</h5>
+              <p>Earn verifiable certificates upon course completion that demonstrate your knowledge to employers and
+                clients.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+     MENTORS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""==== -->
+  <section class="tm-section">
+    <div class="container">
+      <div class="tm-section-head" data-aos>
+        <div class="tm-section-badge">Expert Faculty</div>
+        <h2>Learn from Market Professionals</h2>
+        <p>Our mentors have decades of combined experience in Indian equity markets, derivatives, and risk management.
+        </p>
+      </div>
+      <div class="row g-4" id="mentorsGrid"><!-- Injected by JS --></div>
+      <div class="text-center mt-4">
+        <a href="mentors.html" class="btn btn-outline-primary btn-lg">
+          <i class="bi bi-people me-2"></i>Meet All Mentors
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+     TESTIMONIALS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""==== -->
+  <section class="tm-section" style="background:var(--bg-alt);">
+    <div class="container">
+      <div class="tm-section-head" data-aos>
+        <div class="tm-section-badge">Student Reviews</div>
+        <h2>What Our Students Say</h2>
+        <p>Over 10,000 students have transformed their trading skills with Trading Academy. Here's what they have to
+          say.</p>
+      </div>
+      <div class="row g-4" id="testimonialsGrid"><!-- Injected by JS --></div>
+    </div>
+  </section>
+
+  <!-- ====""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+     BLOG PREVIEW
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""==== -->
+  <section class="tm-section">
+    <div class="container">
+      <div class="tm-section-head" data-aos>
+        <div class="tm-section-badge">Latest Articles</div>
+        <h2>Trading Insights & Market Education</h2>
+        <p>Stay ahead of the market with expert analysis, trading tips, and educational articles from our mentors.</p>
+      </div>
+      <div class="row g-4" id="blogPreviewGrid"><!-- Injected by JS --></div>
+      <div class="text-center mt-4">
+        <a href="blog.html" class="btn btn-outline-primary btn-lg">
+          <i class="bi bi-newspaper me-2"></i>View All Articles
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+     CTA
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""==== -->
+  <section class="tm-cta">
+    <div class="container" style="position:relative;z-index:1;">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+          <div class="tm-section-badge"
+            style="background:rgba(245,158,11,.15);border-color:rgba(245,158,11,.3);color:#f59e0b;margin-bottom:1.25rem;">
+            Start Today</div>
+          <h2>Ready to Become a Profitable Trader?</h2>
+          <p>Join thousands of students who have already transformed their financial future through disciplined,
+            knowledge-based trading.</p>
+          <div class="d-flex flex-wrap justify-content-center gap-3">
+            <a href="register.html" class="btn btn-cta btn-lg"><i class="bi bi-person-plus me-2"></i>Enroll Now -
+              Free</a>
+            <a href="pricing.html" class="btn btn-cta-outline btn-lg"><i class="bi bi-tag me-2"></i>View Pricing</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- ====""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+     FOOTER
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""==== -->
+  <footer class="tm-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <a href="index.html" class="footer-brand text-decoration-none">
+            <img src="assets/img/logo.svg" alt="Trading Academy Logo"
+              style="height:24px;width:24px;margin-right:8px;">TradingAcademy
+          </a>
+          <p>India's premier stock market trading education platform. Learn from SEBI-registered advisors and build real
+            trading skills.</p>
+          <div class="tm-footer-social">
+            <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i
+                class="bi bi-facebook"></i></a>
+            <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter"><i
+                class="bi bi-twitter-x"></i></a>
+            <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube"><i
+                class="bi bi-youtube"></i></a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn"><i
+                class="bi bi-linkedin"></i></a>
+            <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i
+                class="bi bi-instagram"></i></a>
+          </div>
+                    <div class="mt-4">
+            <h6 class="mb-2 text-white fw-bold" style="font-size:0.75rem;letter-spacing:0.05em;text-transform:uppercase;">Get Free Trading Tips</h6>
+            <form id="newsletterForm" class="d-flex w-100" style="max-width:320px;">
+              <div class="input-group" style="border-radius:8px; overflow:hidden; border:1px solid rgba(255,255,255,0.15); background:rgba(255,255,255,0.05); align-items:stretch; height:44px;">
+                <span class="input-group-text border-0" style="background:transparent; color:rgba(255,255,255,0.6); padding:0 0.75rem 0 1rem; display:flex; align-items:center;">
+                  <i class="bi bi-envelope"></i>
+                </span>
+                <input type="email" class="form-control border-0 shadow-none" placeholder="Your email address" required style="background:transparent; color:#fff; font-size:0.9rem; padding:0 0.5rem 0 0; display:flex; align-items:center;">
+                <button type="submit" class="btn btn-primary border-0 m-0" style="border-radius:0; padding:0 1.25rem; display:flex; align-items:center; justify-content:center;">
+                  <i class="bi bi-send"></i>
+                </button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+        <div class="col-6 col-lg-2">
+          <h6>Quick Links</h6>
+          <ul>
+            <li><a href="index.html"><i class="bi bi-chevron-right"></i>Home</a></li>
+            <li><a href="about.html"><i class="bi bi-chevron-right"></i>About Us</a></li>
+            <li><a href="courses.html"><i class="bi bi-chevron-right"></i>Courses</a></li>
+            <li><a href="mentors.html"><i class="bi bi-chevron-right"></i>Mentors</a></li>
+            <li><a href="pricing.html"><i class="bi bi-chevron-right"></i>Pricing</a></li>
+            <li><a href="contact.html"><i class="bi bi-chevron-right"></i>Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-lg-2">
+          <h6>Courses</h6>
+          <ul>
+            <li><a href="courses.html?level=Beginner"><i class="bi bi-chevron-right"></i>Beginner</a></li>
+            <li><a href="courses.html?level=Intermediate"><i class="bi bi-chevron-right"></i>Intermediate</a></li>
+            <li><a href="courses.html?level=Advanced"><i class="bi bi-chevron-right"></i>Advanced</a></li>
+            <li><a href="free-resources.html"><i class="bi bi-chevron-right"></i>Free Resources</a></li>
+            <li><a href="blog.html"><i class="bi bi-chevron-right"></i>Blog</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4">
+          <h6>Contact Us</h6>
+          <ul>
+            <li style="display:flex;gap:.5rem;margin-bottom:.5rem;font-size:.875rem;color:#94a3b8;"><i
+                class="bi bi-geo-alt-fill" style="color:#f59e0b;margin-top:3px;flex-shrink:0;"></i>123 Financial
+              District, Bandra Kurla Complex, Mumbai - 400051</li>
+            <li><a href="mailto:info@tradingacademy.in"><i class="bi bi-envelope me-2"
+                  style="color:#f59e0b;"></i>info@tradingacademy.in</a></li>
+            <li><a href="tel:+918001234567"><i class="bi bi-telephone me-2" style="color:#f59e0b;"></i>+91 800 123
+                4567</a></li>
+            <li><a href="contact.html"><i class="bi bi-clock me-2" style="color:#f59e0b;"></i>Mon-Sat: 9 AM - 7 PM
+                IST</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="tm-footer-bottom">
+      <div class="container">
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+          <p class="mb-0">(c) 2024 Trading Academy. All rights reserved.</p>
+          <div class="d-flex gap-3">
+            <a href="privacy-policy.html" style="color:#64748b;font-size:.8rem;text-decoration:none;">Privacy Policy</a>
+            <a href="terms-of-service.html" style="color:#64748b;font-size:.8rem;text-decoration:none;">Terms of Service</a>
+            <a href="refund-policy.html" style="color:#64748b;font-size:.8rem;text-decoration:none;">Refund Policy</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script>
+    // "" Render Featured Courses """""""""""""""""""""""""""""""""
+    function renderFeaturedCourses() {
+      const featured = ACADEMY.courses.filter(c => c.featured).slice(0, 3);
+      const grid = document.getElementById('featuredCoursesGrid');
+      if (!grid) return;
+      grid.innerHTML = featured.map(c => `
+    <div class="col-md-4" data-aos>
+      <div class="tm-course-card h-100">
+        <div class="tm-course-card-img-wrap">
+          <img src="${c.thumbImage}" alt="${c.title}" class="tm-course-card-img" loading="lazy" width="450" height="280"/>
+          <span class="tm-level-badge badge-${c.level.toLowerCase()}">${c.level}</span>
+        </div>
+        <div class="tm-course-card-body">
+          <h5>${c.title}</h5>
+          <p class="tm-home-course-desc">${c.shortDesc.length > 82 ? c.shortDesc.slice(0, 82).trimEnd() + '…' : c.shortDesc}</p>
+          <div class="tm-course-meta tm-home-course-meta">
+            <span><i class="bi bi-clock"></i> ${c.duration}</span>
+            <span><i class="bi bi-play-circle"></i> ${c.lessons} Lessons</span>
+          </div>
+          <div class="tm-course-price">
+            <div>
+              <span class="tm-price-current">${c.price.toLocaleString('en-IN')}</span>
+              <span class="tm-price-original">${c.originalPrice.toLocaleString('en-IN')}</span>
+            </div>
+            <div class="d-flex gap-2">
+              <a href="course-details.html?id=${c.id}" class="btn btn-outline-primary btn-sm">View</a>
+              <button class="btn btn-primary btn-sm" data-enroll="${c.id}">Enroll</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>`).join('');
+    }
+
+    // "" Render Mentors Preview """"""""""""""""""""""""""""""""""
+    function renderMentorsPreview() {
+      const grid = document.getElementById('mentorsGrid');
+      if (!grid) return;
+      grid.innerHTML = ACADEMY.mentors.slice(0, 4).map(m => `
+    <div class="col-6 col-md-3" data-aos>
+      <div class="tm-mentor-card">
+        <div class="tm-mentor-img-wrap">
+          <img src="${m.image}" alt="${m.name}" class="tm-mentor-img" loading="lazy"/>
+        </div>
+        <div class="tm-mentor-card-body">
+          <h5>${m.name}</h5>
+          <p class="mentor-title">${m.title}</p>
+          <div class="tm-mentor-stats">
+            <div><strong>${m.students.toLocaleString('en-IN')}+</strong><span>Students</span></div>
+            <div><strong>${m.experience}</strong><span>Exp.</span></div>
+          </div>
+          <div class="tm-mentor-social">
+            <a href="${m.social.linkedin}" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="${m.social.twitter}"  target="_blank" rel="noopener" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+            <a href="${m.social.youtube}"  target="_blank" rel="noopener" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>`).join('');
+    }
+
+    // "" Render Testimonials """""""""""""""""""""""""""""""""""""
+    function renderTestimonials() {
+      const grid = document.getElementById('testimonialsGrid');
+      if (!grid) return;
+      grid.innerHTML = ACADEMY.testimonials.slice(0, 3).map(t => `
+    <div class="col-md-4" data-aos>
+      <div class="tm-testimonial">
+        <div class="tm-testimonial-stars">
+          ${Array(t.rating).fill('<i class="bi bi-star-fill"></i>').join('')}
+        </div>
+        <p>"${t.text}"</p>
+        <div class="tm-testimonial-author">
+          <img src="${t.image}" alt="${t.name}" loading="lazy"/>
+          <div><strong>${t.name}</strong><span>${t.role}</span></div>
+        </div>
+      </div>
+    </div>`).join('');
+    }
+
+    // "" Render Blog Preview """""""""""""""""""""""""""""""""""""
+    function renderBlogPreview() {
+      const grid = document.getElementById('blogPreviewGrid');
+      if (!grid) return;
+      grid.innerHTML = ACADEMY.blogs.slice(0, 3).map(b => `
+    <div class="col-md-4" data-aos>
+      <div class="tm-blog-card">
+        <div style="overflow:hidden;">
+          <img src="${b.thumbImage}" alt="${b.title}" class="tm-blog-card-img" loading="lazy" width="450" height="280"/>
+        </div>
+        <div class="tm-blog-card-body">
+          <a class="tm-blog-cat" href="blog.html?cat=${encodeURIComponent(b.category)}">${b.category}</a>
+          <div class="tm-blog-meta"><i class="bi bi-calendar3"></i> ${b.date} <span>-</span> <i class="bi bi-clock"></i> ${b.readTime}</div>
+          <h5>${b.title}</h5>
+          <p>${b.excerpt}</p>
+          <a href="blog-details.html?id=${b.id}" class="btn btn-sm btn-outline-primary">Read Article <i class="bi bi-arrow-right ms-1"></i></a>
+        </div>
+      </div>
+    </div>`).join('');
+    }
+
+    // Init page
+    renderFeaturedCourses();
+    renderMentorsPreview();
+    renderTestimonials();
+    renderBlogPreview();
+  </script>
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>

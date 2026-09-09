@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mentors - Trading Academy | Expert Stock Market Trading Educators</title>
+  <meta name="description" content="Meet Trading Academy's expert mentors - SEBI-registered investment advisors and certified market professionals with decades of real trading experience."/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"/>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <script src="assets/js/theme.js"></script>
+  <style>
+    .mentor-detail-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: var(--transition);
+    }
+    .mentor-detail-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-xl); }
+    .mentor-detail-header {
+      background: linear-gradient(135deg, #1e3a5f, #0c1829);
+      padding: 2rem;
+      text-align: center;
+    }
+    .mentor-detail-img {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #f59e0b;
+      margin-bottom: 1rem;
+    }
+    .mentor-detail-body { padding: 1.5rem; }
+    .mentor-stat-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: .75rem; margin: 1rem 0; }
+    .mentor-stat-box { text-align: center; background: var(--bg-alt); border-radius: 8px; padding: .625rem .375rem; }
+    .mentor-stat-box strong { display: block; font-size: 1rem; font-weight: 800; color: var(--primary); }
+    html.dark-mode .mentor-stat-box strong { color: var(--secondary); }
+    .mentor-stat-box span { font-size: .7rem; color: var(--text-muted); }
+    .specialization-tag {
+      display: inline-block;
+      background: rgba(30,58,95,.08);
+      color: var(--primary);
+      border: 1px solid rgba(30,58,95,.15);
+      padding: .2rem .625rem;
+      border-radius: 4px;
+      font-size: .75rem;
+      font-weight: 600;
+      margin: .15rem;
+    }
+    html.dark-mode .specialization-tag { background: rgba(245,158,11,.08); color: var(--secondary); border-color: rgba(245,158,11,.15); }
+  </style>
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg tm-navbar fixed-top" id="mainNavbar">
+  <div class="container">
+    <a class="navbar-brand tm-brand" href="index.html"><img src="assets/img/logo.svg" alt="Trading Academy Logo" style="height:28px; width:28px;"><span>TradingAcademy</span></a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <ul class="navbar-nav mx-auto gap-1">
+        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Home</a><ul class="dropdown-menu"><li><a class="dropdown-item" href="index.html">Home Page 1</a></li><li><a class="dropdown-item" href="home-2.html">Home Page 2</a></li></ul></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
+        <li class="nav-item"><a class="nav-link active" href="mentors.html">Mentors</a></li>
+        <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+      <div class="d-flex align-items-center gap-2 navbar-nav-buttons">
+        <button id="themeToggle" class="btn"><i class="bi bi-moon-fill" id="themeIcon"></i></button>
+        <button id="rtlToggle" class="btn"><i class="bi bi-translate"></i></button>
+        <a href="login.html" class="btn btn-warning btn-sm fw-bold px-3" id="authBtn"><i class="bi bi-person me-1"></i>Login</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="tm-page-hero">
+  <div class="container" style="position:relative;z-index:1;">
+    <nav aria-label="breadcrumb" class="tm-breadcrumb mb-3"><ol class="breadcrumb justify-content-center mb-0"><li class="breadcrumb-item"><a href="index.html">Home</a></li><li class="breadcrumb-item active">Mentors</li></ol></nav>
+    <h1 class="mb-3">Meet Your Expert Mentors</h1>
+    <p class="mb-0">SEBI-registered advisors and certified professionals with decades of real market experience</p>
+  </div>
+</section>
+
+<!-- MENTORS GRID -->
+<section class="tm-section">
+  <div class="container">
+    <div class="tm-section-head" data-aos><div class="tm-section-badge">Our Faculty</div><h2>Learn from the Best in Indian Markets</h2><p>Every mentor at Trading Academy has real, verifiable credentials - SEBI registration, NISM certifications, and documented trading track records.</p></div>
+    <div class="row g-4" id="mentorsDetailGrid"></div>
+  </div>
+</section>
+
+<!-- WHY OUR MENTORS -->
+<section class="tm-section" style="background:var(--bg-alt);">
+  <div class="container">
+    <div class="tm-section-head" data-aos><div class="tm-section-badge">Our Standards</div><h2>Every Mentor Must Meet Our Strict Criteria</h2></div>
+    <div class="row g-4">
+      <div class="col-md-3 col-6" data-aos>
+        <div class="text-center p-3"><i class="bi bi-patch-check-fill" style="font-size:2.5rem;color:var(--primary);display:block;margin-bottom:.75rem;"></i><h6>SEBI Registered</h6><p style="font-size:.85rem;color:var(--text-muted);">Mandatory SEBI registration as Investment Advisor or Research Analyst</p></div>
+      </div>
+      <div class="col-md-3 col-6" data-aos>
+        <div class="text-center p-3"><i class="bi bi-graph-up" style="font-size:2.5rem;color:var(--secondary);display:block;margin-bottom:.75rem;"></i><h6>10+ Years Experience</h6><p style="font-size:.85rem;color:var(--text-muted);">Minimum decade of active trading in Indian equity and derivatives markets</p></div>
+      </div>
+      <div class="col-md-3 col-6" data-aos>
+        <div class="text-center p-3"><i class="bi bi-mortarboard-fill" style="font-size:2.5rem;color:var(--info);display:block;margin-bottom:.75rem;"></i><h6>Proven Teaching Ability</h6><p style="font-size:.85rem;color:var(--text-muted);">Demonstrated ability to explain complex concepts clearly and practically</p></div>
+      </div>
+      <div class="col-md-3 col-6" data-aos>
+        <div class="text-center p-3"><i class="bi bi-star-fill" style="font-size:2.5rem;color:var(--warning);display:block;margin-bottom:.75rem;"></i><h6>4.5+ Student Rating</h6><p style="font-size:.85rem;color:var(--text-muted);">Consistently maintain a minimum 4.5/5 rating from student reviews</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="tm-cta">
+  <div class="container" style="position:relative;z-index:1;text-align:center;">
+    <h2>Ready to Learn from <span class="text-warning">the Best?</span></h2>
+    <p>Join 10,000+ students mentored by India's top trading professionals.</p>
+    <div class="d-flex flex-wrap justify-content-center gap-3">
+      <a href="courses.html" class="btn btn-cta btn-lg"><i class="bi bi-book me-2"></i>Browse Courses</a>
+      <a href="contact.html" class="btn btn-cta-outline btn-lg"><i class="bi bi-chat me-2"></i>Contact a Mentor</a>
+    </div>
+  </div>
+</section>
+
+<!-- ====""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+     FOOTER
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""==== -->
+<footer class="tm-footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <a href="index.html" class="footer-brand text-decoration-none">
+          <img src="assets/img/logo.svg" alt="Trading Academy Logo" style="height:24px;width:24px;margin-right:8px;">TradingAcademy
+        </a>
+        <p>India's premier stock market trading education platform. Learn from SEBI-registered advisors and build real trading skills.</p>
+        <div class="tm-footer-social">
+          <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="https://twitter.com"  target="_blank" rel="noopener" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+          <a href="https://youtube.com"  target="_blank" rel="noopener" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+        </div>
+        <div class="mt-4">
+          <h6 class="mb-2 text-white fw-bold" style="font-size:0.75rem;letter-spacing:0.05em;text-transform:uppercase;">Get Free Trading Tips</h6>
+          <form id="newsletterForm" class="d-flex w-100" style="max-width:320px;">
+              <div class="input-group" style="border-radius:8px; overflow:hidden; border:1px solid rgba(255,255,255,0.15); background:rgba(255,255,255,0.05); align-items:stretch; height:44px;">
+                <span class="input-group-text border-0" style="background:transparent; color:rgba(255,255,255,0.6); padding:0 0.75rem 0 1rem; display:flex; align-items:center;">
+                  <i class="bi bi-envelope"></i>
+                </span>
+                <input type="email" class="form-control border-0 shadow-none" placeholder="Your email address" required style="background:transparent; color:#fff; font-size:0.9rem; padding:0 0.5rem 0 0; display:flex; align-items:center;">
+                <button type="submit" class="btn btn-primary border-0 m-0" style="border-radius:0; padding:0 1.25rem; display:flex; align-items:center; justify-content:center;">
+                  <i class="bi bi-send"></i>
+                </button>
+              </div>
+            </form>
+        </div>
+
+      </div>
+      <div class="col-6 col-lg-2">
+        <h6>Quick Links</h6>
+        <ul>
+          <li><a href="index.html"><i class="bi bi-chevron-right"></i>Home</a></li>
+          <li><a href="about.html"><i class="bi bi-chevron-right"></i>About Us</a></li>
+          <li><a href="courses.html"><i class="bi bi-chevron-right"></i>Courses</a></li>
+          <li><a href="mentors.html"><i class="bi bi-chevron-right"></i>Mentors</a></li>
+          <li><a href="pricing.html"><i class="bi bi-chevron-right"></i>Pricing</a></li>
+          <li><a href="contact.html"><i class="bi bi-chevron-right"></i>Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-2">
+        <h6>Courses</h6>
+        <ul>
+          <li><a href="courses.html?level=Beginner"><i class="bi bi-chevron-right"></i>Beginner</a></li>
+          <li><a href="courses.html?level=Intermediate"><i class="bi bi-chevron-right"></i>Intermediate</a></li>
+          <li><a href="courses.html?level=Advanced"><i class="bi bi-chevron-right"></i>Advanced</a></li>
+          <li><a href="free-resources.html"><i class="bi bi-chevron-right"></i>Free Resources</a></li>
+          <li><a href="blog.html"><i class="bi bi-chevron-right"></i>Blog</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4">
+        <h6>Contact Us</h6>
+        <ul>
+          <li style="display:flex;gap:.5rem;margin-bottom:.5rem;font-size:.875rem;color:#94a3b8;"><i class="bi bi-geo-alt-fill" style="color:#f59e0b;margin-top:3px;flex-shrink:0;"></i>123 Financial District, Bandra Kurla Complex, Mumbai - 400051</li>
+          <li><a href="mailto:info@tradingacademy.in"><i class="bi bi-envelope me-2" style="color:#f59e0b;"></i>info@tradingacademy.in</a></li>
+          <li><a href="tel:+918001234567"><i class="bi bi-telephone me-2" style="color:#f59e0b;"></i>+91 800 123 4567</a></li>
+          <li><a href="contact.html"><i class="bi bi-clock me-2" style="color:#f59e0b;"></i>Mon-Sat: 9 AM - 7 PM IST</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="tm-footer-bottom">
+    <div class="container">
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+        <p class="mb-0">(c) 2024 Trading Academy. All rights reserved.</p>
+        <div class="d-flex gap-3">
+          <a href="privacy-policy.html" style="color:#64748b;font-size:.8rem;text-decoration:none;">Privacy Policy</a>
+          <a href="terms-of-service.html" style="color:#64748b;font-size:.8rem;text-decoration:none;">Terms of Service</a>
+          <a href="refund-policy.html" style="color:#64748b;font-size:.8rem;text-decoration:none;">Refund Policy</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/auth.js"></script>
+<script>
+document.getElementById('mentorsDetailGrid').innerHTML = ACADEMY.mentors.map(m => `
+  <div class="col-md-6 col-lg-4" data-aos>
+    <div class="mentor-detail-card">
+      <div class="mentor-detail-header">
+        <img src="${m.image}" alt="${m.name}" class="mentor-detail-img" loading="lazy"/>
+        <h4 style="color:#fff;margin-bottom:.25rem;font-size:1.15rem;">${m.name}</h4>
+        <p style="color:#f59e0b;font-size:.875rem;font-weight:600;margin-bottom:.5rem;">${m.title}</p>
+        <p style="color:#94a3b8;font-size:.825rem;margin-bottom:.75rem;">${m.qualification}</p>
+        <div class="d-flex justify-content-center gap-2">
+          <a href="${m.social.linkedin}" target="_blank" rel="noopener" style="width:32px;height:32px;background:rgba(255,255,255,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#e2e8f0;text-decoration:none;font-size:.85rem;transition:.2s;" onmouseover="this.style.background='#0077b5'" onmouseout="this.style.background='rgba(255,255,255,.1)'"><i class="bi bi-linkedin"></i></a>
+          <a href="${m.social.twitter}"  target="_blank" rel="noopener" style="width:32px;height:32px;background:rgba(255,255,255,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#e2e8f0;text-decoration:none;font-size:.85rem;transition:.2s;" onmouseover="this.style.background='#1a91da'" onmouseout="this.style.background='rgba(255,255,255,.1)'"><i class="bi bi-twitter-x"></i></a>
+          <a href="${m.social.youtube}"  target="_blank" rel="noopener" style="width:32px;height:32px;background:rgba(255,255,255,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#e2e8f0;text-decoration:none;font-size:.85rem;transition:.2s;" onmouseover="this.style.background='#ff0000'" onmouseout="this.style.background='rgba(255,255,255,.1)'"><i class="bi bi-youtube"></i></a>
+        </div>
+      </div>
+      <div class="mentor-detail-body">
+        <p style="font-size:.875rem;color:var(--text-muted);line-height:1.6;margin-bottom:1rem;">${m.bio}</p>
+        <div class="mentor-stat-grid">
+          <div class="mentor-stat-box"><strong>${m.students.toLocaleString('en-IN')}+</strong><span>Students</span></div>
+          <div class="mentor-stat-box"><strong>${m.experience}</strong><span>Experience</span></div>
+          <div class="mentor-stat-box"><strong>${m.courses}</strong><span>Courses</span></div>
+        </div>
+        <div class="mt-2">
+          ${m.specializations.map(s => `<span class="specialization-tag">${s}</span>`).join('')}
+        </div>
+      </div>
+    </div>
+  </div>`).join('');
+</script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
