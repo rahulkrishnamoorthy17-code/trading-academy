@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - Trading Academy</title>
+  <meta name="description" content="Log in to your Trading Academy account to access your courses, live classes, and student dashboard."/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"/>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <script src="assets/js/theme.js"></script>
+  <style>
+    body { min-height: 100vh; background: var(--bg); }
+    /* Keep auth navbar visually identical to the site's standard navbar,
+       independent of the light/dark page content behind it. */
+    #mainNavbar.tm-navbar {
+      background: var(--navbar-bg) !important;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+    .login-wrapper {
+      min-height: 100vh;
+      display: flex;
+      align-items: stretch;
+    }
+    .login-left {
+      flex: 1;
+      background: linear-gradient(135deg, #0c1829 0%, #1e3a5f 60%, #0f2a4a 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .login-left::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 80%;
+      height: 200%;
+      background: radial-gradient(ellipse, rgba(245,158,11,.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .login-left-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 3rem;
+      text-decoration: none;
+    }
+    .login-left-brand i { font-size: 1.75rem; color: #f59e0b; }
+    .login-left-brand span { font-family: 'Outfit', sans-serif; font-size: 1.5rem; font-weight: 800; color: #fff; }
+    .login-left h2 { color: #fff; font-size: 1.9rem; margin-bottom: 1rem; line-height: 1.3; }
+    .login-left p  { color: #94a3b8; font-size: 1rem; }
+    .login-feature { display: flex; align-items: center; gap: 0.875rem; color: #cbd5e1; margin: 0.75rem 0; font-size: 0.95rem; }
+    .login-feature i { color: #f59e0b; font-size: 1.1rem; }
+
+    .login-right {
+      width: 480px;
+      min-width: 300px;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 3rem 2.5rem;
+      border-left: 1px solid var(--border);
+    }
+    .login-right h3 { font-weight: 800; font-size: 1.6rem; margin-bottom: 0.375rem; }
+    .login-right > p { color: var(--text-muted); font-size: 0.925rem; margin-bottom: 2rem; }
+
+    .admin-hint {
+      background: rgba(239,68,68,.08);
+      border: 1px solid rgba(239,68,68,.2);
+      border-radius: 8px;
+      padding: 0.875rem 1rem;
+      font-size: 0.825rem;
+      color: #ef4444;
+      margin-bottom: 1.25rem;
+    }
+    html.dark-mode .admin-hint { background: rgba(239,68,68,.1); }
+
+    .divider-or { position: relative; text-align: center; margin: 1.25rem 0; }
+    .divider-or::before { content: ''; position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: var(--border); }
+    .divider-or span { position: relative; background: var(--bg); padding: 0 0.875rem; font-size: 0.8rem; color: var(--text-muted); }
+
+    @media (max-width: 767.98px) {
+      .login-left { display: none; }
+      .login-right { width: 100%; border-left: none; padding: 2rem 1.5rem; }
+    }
+  </style>
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+</head>
+<body>
+<!-- NAVBAR -->
+<nav class="navbar tm-navbar" id="mainNavbar">
+  <div class="container">
+    <a class="navbar-brand tm-brand" href="index.html">
+      <img src="assets/img/logo.svg" alt="Trading Academy Logo" style="height:28px; width:28px;"><span>TradingAcademy</span>
+    </a>
+    <div class="d-flex align-items-center gap-2 navbar-nav-buttons ms-auto">
+      <button id="themeToggle" class="btn" aria-label="Toggle dark mode"><i class="bi bi-moon-fill" id="themeIcon"></i></button>
+      <button id="rtlToggle" class="btn" aria-label="Toggle RTL"><i class="bi bi-translate"></i></button>
+    </div>
+  </div>
+</nav>
+<div class="login-wrapper" style="min-height: calc(100vh - 70px);">
+  <!-- Left Panel -->
+  <div class="login-left">
+    <a href="index.html" class="login-left-brand">
+      <img src="assets/img/logo.svg" alt="Trading Academy Logo" style="height:28px; width:28px;"><span>TradingAcademy</span>
+    </a>
+    <h2>India's Premier Stock Market Trading Academy</h2>
+    <p>Learn from SEBI-registered advisors and certified market professionals. Build real trading skills through structured courses and live mentoring.</p>
+    <div class="mt-2">
+      <div class="login-feature"><i class="bi bi-check-circle-fill"></i> 8 Structured Courses from Beginner to Advanced</div>
+      <div class="login-feature"><i class="bi bi-check-circle-fill"></i> Weekly Live Classes with Expert Mentors</div>
+      <div class="login-feature"><i class="bi bi-check-circle-fill"></i> Mock Portfolio to Practice Risk-Free</div>
+      <div class="login-feature"><i class="bi bi-check-circle-fill"></i> Verifiable Course Completion Certificates</div>
+    </div>
+    <div class="mt-4 login-enrolled-count">
+      <i class="bi bi-people-fill me-1"></i>10,000+ Students Enrolled
+    </div>
+  </div>
+
+  <!-- Right Panel -->
+  <div class="login-right tm-form">
+    <h3 class="mb-1">Welcome back</h3>
+    <p>Sign in to access your learning dashboard</p>
+
+    <!-- Admin Demo Hint -->
+    <div class="admin-hint">
+      <strong><i class="bi bi-shield-lock me-1"></i>Admin Demo:</strong> admin@academy.com / Admin@123
+    </div>
+
+    <div id="loginError" class="alert alert-danger py-2 px-3 mb-3 d-none" role="alert" style="font-size:.875rem;border-radius:8px;"></div>
+
+    <form id="loginForm" novalidate>
+      <div class="mb-3">
+        <label class="form-label" for="loginEmail">Email Address</label>
+        <input type="email" class="form-control" id="loginEmail" placeholder="your@email.com" required autocomplete="username"/>
+        <div class="invalid-feedback">Please enter a valid email address.</div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="loginPassword">Password</label>
+        <div class="password-wrap">
+          <input type="password" class="form-control" id="loginPassword" placeholder="Your password" required autocomplete="current-password"/>
+          <button type="button" class="password-toggle" aria-label="Toggle password visibility">
+            <i class="bi bi-eye"></i>
+          </button>
+        </div>
+        <div class="invalid-feedback">Password is required.</div>
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="rememberMe"/>
+          <label class="form-check-label" for="rememberMe" style="font-size:.875rem;color:var(--text-muted)">Remember me</label>
+        </div>
+        <a href="#" style="font-size:.875rem;color:var(--primary);text-decoration:none;" onclick="showToast('Password reset link has been sent to your email.','info');return false;">Forgot password?</a>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100 py-2 fw-bold mb-3" id="loginBtn">
+        <span id="loginBtnText"><i class="bi bi-box-arrow-in-right me-2"></i>Sign In</span>
+        <span id="loginBtnSpinner" class="d-none"><span class="spinner-border spinner-border-sm me-2"></span>Signing in...</span>
+      </button>
+    </form>
+
+    <div class="divider-or"><span>Don't have an account?</span></div>
+
+    <a href="register.html" class="btn btn-outline-primary w-100 py-2 fw-semibold">
+      <i class="bi bi-person-plus me-2"></i>Create Free Account
+    </a>
+
+
+    <!-- Social login options intentionally placed BELOW Create Free Account -->
+    <div class="divider-or mt-3"><span>OR</span></div>
+
+    <div class="d-flex flex-column gap-3 mb-3">
+      <button type="button" class="btn w-100 d-flex align-items-center justify-content-center" style="background:#fff; color:#333; border:1px solid #d1d5db; border-radius:8px; font-weight:600; padding:0.6rem; transition:all 0.2s; box-shadow:0 1px 2px rgba(0,0,0,0.05);" onmouseover="this.style.backgroundColor='#f9fafb'" onmouseout="this.style.backgroundColor='#fff'" aria-label="Continue with Google" onclick="handleSocialLogin('google', this)">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="20px" height="20px" class="me-2"><path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"/><path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"/><path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"/><path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"/></svg>
+        Continue with Google
+      </button>
+      <button type="button" class="btn w-100 d-flex align-items-center justify-content-center" style="background:#000; color:#fff; border:1px solid #000; border-radius:8px; font-weight:600; padding:0.6rem; transition:all 0.2s; box-shadow:0 1px 2px rgba(0,0,0,0.05);" onmouseover="this.style.backgroundColor='#333'" onmouseout="this.style.backgroundColor='#000'" aria-label="Continue with Apple" onclick="handleSocialLogin('apple', this)">
+        <i class="bi bi-apple me-2" style="font-size:1.2rem; line-height:1;"></i>
+        Continue with Apple
+      </button>
+    </div>
+
+    <p class="text-center mt-4 mb-0" style="font-size:.8rem;color:var(--text-muted);">
+      <a href="index.html" style="color:var(--text-muted);text-decoration:none;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">
+        <i class="bi bi-arrow-left me-1"></i>Back to Website
+      </a>
+    </p>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/auth.js"></script>
+<script>
+  // Redirect if already logged in
+  (function() {
+    const user = AUTH.getCurrentUser();
+    if (user) {
+      window.location.href = user.role === 'admin' ? 'admin-dashboard.html' : 'dashboard.html';
+    }
+  })();
+
+  function handleSocialLogin(provider, btnElement) {
+    document.getElementById('loginError').classList.add('d-none');
+    
+    const originalHtml = btnElement.innerHTML;
+    btnElement.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Connecting...';
+    btnElement.disabled = true;
+
+    setTimeout(() => {
+      const result = AUTH.socialLogin(provider);
+      if (result.success) {
+        window.location.href = result.user.role === 'admin' ? 'admin-dashboard.html' : 'dashboard.html';
+      }
+    }, 800);
+  }
+
+  document.getElementById('loginForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const email    = document.getElementById('loginEmail').value;
+    const password = document.getElementById('loginPassword').value;
+    const errDiv   = document.getElementById('loginError');
+
+    if (!this.checkValidity()) { this.classList.add('was-validated'); return; }
+
+    // Show spinner
+    document.getElementById('loginBtnText').classList.add('d-none');
+    document.getElementById('loginBtnSpinner').classList.remove('d-none');
+    document.getElementById('loginBtn').disabled = true;
+
+    setTimeout(() => {
+      const result = AUTH.login(email, password);
+
+      document.getElementById('loginBtnText').classList.remove('d-none');
+      document.getElementById('loginBtnSpinner').classList.add('d-none');
+      document.getElementById('loginBtn').disabled = false;
+
+      if (result.success) {
+        errDiv.classList.add('d-none');
+        window.location.href = result.user.role === 'admin' ? 'admin-dashboard.html' : 'dashboard.html';
+      } else {
+        errDiv.textContent = result.message;
+        errDiv.classList.remove('d-none');
+      }
+    }, 800);
+  });
+
+  // Auth page theme + LTR/RTL controls
+  // theme.js applies saved preferences before paint, but this page does not load main.js,
+  // so wire the navbar buttons here as well.
+  (function initAuthNavbarControls() {
+    const root = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const rtlToggle = document.getElementById('rtlToggle');
+
+    function applyTheme(theme) {
+      const isDark = theme === 'dark';
+      root.classList.toggle('dark-mode', isDark);
+      root.setAttribute('data-bs-theme', isDark ? 'dark' : 'light');
+      if (isDark) root.setAttribute('data-theme', 'dark');
+      else root.removeAttribute('data-theme');
+      if (themeIcon) themeIcon.className = isDark ? 'bi bi-sun-fill' : 'bi bi-moon-fill';
+      try { localStorage.setItem('tm-theme', isDark ? 'dark' : 'light'); } catch (e) {}
+    }
+
+    function applyDirection(dir) {
+      const normalized = dir === 'rtl' ? 'rtl' : 'ltr';
+      root.setAttribute('dir', normalized);
+      if (rtlToggle) {
+        rtlToggle.setAttribute('aria-label', normalized === 'rtl' ? 'Switch to LTR' : 'Switch to RTL');
+        rtlToggle.setAttribute('title', normalized === 'rtl' ? 'Switch to LTR' : 'Switch to RTL');
+      }
+      try { localStorage.setItem('tm-rtl', normalized === 'rtl' ? 'true' : 'false'); } catch (e) {}
+    }
+
+    let savedTheme = 'light';
+    let savedDir = 'ltr';
+    try {
+      savedTheme = localStorage.getItem('tm-theme') || (root.classList.contains('dark-mode') ? 'dark' : 'light');
+      savedDir = localStorage.getItem('tm-rtl') === 'true' ? 'rtl' : 'ltr';
+    } catch (e) {}
+    applyTheme(savedTheme);
+    applyDirection(savedDir);
+
+    if (themeToggle) {
+      themeToggle.addEventListener('click', function () {
+        applyTheme(root.classList.contains('dark-mode') ? 'light' : 'dark');
+      });
+    }
+
+    if (rtlToggle) {
+      rtlToggle.addEventListener('click', function () {
+        applyDirection(root.getAttribute('dir') === 'rtl' ? 'ltr' : 'rtl');
+      });
+    }
+  })();
+
+  // Password toggle handled inline because main.js is not loaded on this auth page
+  document.querySelectorAll('.password-toggle').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const input = this.closest('.password-wrap').querySelector('input');
+      const isPass = input.type === 'password';
+      input.type = isPass ? 'text' : 'password';
+      this.querySelector('i').className = isPass ? 'bi bi-eye-slash' : 'bi bi-eye';
+    });
+  });
+
+  function showToast(message, type) {
+    let c = document.getElementById('tc');
+    if (!c) { c = document.createElement('div'); c.id='tc'; c.className='toast-container position-fixed bottom-0 end-0 p-3'; c.style.zIndex=9999; document.body.appendChild(c); }
+    const map = {success:'bg-success',danger:'bg-danger',warning:'bg-warning text-dark',info:'bg-primary'};
+    const t = document.createElement('div');
+    t.className='toast align-items-center text-white border-0 '+(map[type]||map.info);
+    t.setAttribute('role','alert');
+    t.innerHTML=`<div class="d-flex"><div class="toast-body fw-semibold">${message}</div><button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button></div>`;
+    c.appendChild(t);
+    new bootstrap.Toast(t,{delay:4000}).show();
+    t.addEventListener('hidden.bs.toast',()=>t.remove());
+  }
+</script>
+</body>
+</html>
