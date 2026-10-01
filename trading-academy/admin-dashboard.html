@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin Dashboard - Trading Academy</title>
+<meta content="noindex, nofollow" name="robots"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet"/>
+<link href="assets/css/admin.css" rel="stylesheet"/>
+<script>
+    // Force dark admin bg immediately - no FOUC
+    document.documentElement.style.background = '#0a0f1e';
+    document.documentElement.style.colorScheme = 'dark';
+  </script>
+<link href="assets/img/logo.svg" rel="icon" type="image/svg+xml"/>
+<link href="assets/css/client-review-final.css" rel="stylesheet"/></head>
+<body class="admin-body page-admin-dashboard">
+<!-- Sidebar Overlay -->
+<div class="admin-sidebar-overlay" id="adminOverlay"></div>
+<div class="admin-wrapper">
+<!-- ==== SIDEBAR ==== -->
+<aside class="admin-sidebar" id="adminSidebar">
+<a class="admin-brand text-decoration-none" href="index.html">
+<div class="admin-brand-icon"><img alt="Logo" src="assets/img/logo.svg" style="height:32px;width:32px;"/></div>
+<div>
+<div class="admin-brand-name">TradingAcademy</div>
+<div class="admin-brand-sub">Admin Panel</div>
+</div>
+</a>
+<nav class="admin-nav">
+<div class="admin-nav-label">Overview</div>
+<div class="admin-nav-item active" data-section="overview">
+<i class="bi bi-grid-1x2-fill"></i> Dashboard
+        </div>
+<div class="admin-nav-label">Management</div>
+<div class="admin-nav-item" data-section="students">
+<i class="bi bi-people-fill"></i> Students
+          <span class="badge-count" id="navStudentCount"></span>
+</div>
+<div class="admin-nav-item" data-section="courses">
+<i class="bi bi-book-fill"></i> Courses
+        </div>
+<div class="admin-nav-item" data-section="live-classes">
+<i class="bi bi-camera-video-fill"></i> Live Classes
+        </div>
+<div class="admin-nav-item" data-section="assignments">
+<i class="bi bi-clipboard-check-fill"></i> Assignments
+        </div>
+<div class="admin-nav-item" data-section="blog">
+<i class="bi bi-newspaper"></i> Blog Posts
+        </div>
+<div class="admin-nav-label">Finance</div>
+<div class="admin-nav-item" data-section="enrollments">
+<i class="bi bi-bag-check-fill"></i> Enrollments
+        </div>
+<div class="admin-nav-item" data-section="revenue">
+<i class="bi bi-currency-rupee"></i> Revenue
+        </div>
+<div class="admin-nav-label">Content</div>
+<div class="admin-nav-item" data-section="resources">
+<i class="bi bi-folder-fill"></i> Resources
+        </div>
+<div class="admin-nav-item" data-section="testimonials">
+<i class="bi bi-chat-quote-fill"></i> Testimonials
+        </div>
+<div class="admin-nav-label">System</div>
+<div class="admin-nav-item" data-section="settings">
+<i class="bi bi-gear-fill"></i> Settings
+        </div>
+<hr style="border-color:#1e293b;margin:.5rem 1rem;"/>
+<a class="admin-nav-item text-decoration-none" href="index.html" style="color:var(--admin-muted);">
+<i class="bi bi-box-arrow-left"></i> Back to Website
+        </a>
+<div class="admin-nav-item danger" id="adminLogoutBtn">
+<i class="bi bi-power"></i> Logout
+        </div>
+</nav>
+</aside>
+<!-- ==== MAIN ==== -->
+<main class="admin-main">
+<!-- Topbar -->
+<div class="admin-topbar">
+<div class="d-flex align-items-center gap-2">
+<button class="admin-sidebar-toggle" id="adminSidebarToggle"><i class="bi bi-list"></i></button>
+<span class="admin-topbar-title" id="adminTopbarTitle">Dashboard</span>
+</div>
+<div class="admin-topbar-actions">
+<span id="adminUserDisplay" style="font-size:.8rem;color:var(--admin-muted);"></span>
+<a class="admin-icon-btn" href="index.html" title="View Website"><i class="bi bi-eye"></i></a>
+<button class="admin-icon-btn" id="adminLogoutBtnTop" title="Logout"><i class="bi bi-power"></i></button>
+</div>
+</div>
+<!-- Content -->
+<div class="admin-content">
+<!-- ==== OVERVIEW ==== -->
+<div class="admin-section active" id="section-overview">
+<div class="admin-section-header">
+<h4>Dashboard Overview</h4>
+<span id="adminDateTime" style="font-size:.8rem;color:var(--admin-muted);"></span>
+</div>
+<!-- Stat Cards -->
+<div class="row g-3 mb-4">
+<div class="col-6 col-md-3">
+<div class="admin-stat-card">
+<div class="admin-stat-icon" style="background:rgba(59,130,246,.1);color:#60a5fa;"><i class="bi bi-people-fill"></i></div>
+<div>
+<div class="admin-stat-num" id="ovStudents">-</div>
+<div class="admin-stat-label">Total Students</div>
+<div class="admin-stat-change up"><i class="bi bi-arrow-up-short"></i>+12% this month</div>
+</div>
+</div>
+</div>
+<div class="col-6 col-md-3">
+<div class="admin-stat-card">
+<div class="admin-stat-icon" style="background:rgba(245,158,11,.1);color:#fbbf24;"><i class="bi bi-book-fill"></i></div>
+<div>
+<div class="admin-stat-num" id="ovCourses">-</div>
+<div class="admin-stat-label">Active Courses</div>
+<div class="admin-stat-change up"><i class="bi bi-arrow-up-short"></i>+2 this quarter</div>
+</div>
+</div>
+</div>
+<div class="col-6 col-md-3">
+<div class="admin-stat-card">
+<div class="admin-stat-icon" style="background:rgba(16,185,129,.1);color:#34d399;"><i class="bi bi-currency-rupee"></i></div>
+<div>
+<div class="admin-stat-num" id="ovRevenue">-</div>
+<div class="admin-stat-label">Monthly Revenue</div>
+<div class="admin-stat-change up"><i class="bi bi-arrow-up-short"></i>+8.5% vs last month</div>
+</div>
+</div>
+</div>
+<div class="col-6 col-md-3">
+<div class="admin-stat-card">
+<div class="admin-stat-icon" style="background:rgba(239,68,68,.1);color:#f87171;"><i class="bi bi-bag-check-fill"></i></div>
+<div>
+<div class="admin-stat-num" id="ovEnrollments">-</div>
+<div class="admin-stat-label">This Month Enrollments</div>
+<div class="admin-stat-change up"><i class="bi bi-arrow-up-short"></i>+18% vs last month</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Students + Activity -->
+<div class="row g-4">
+<div class="col-lg-7">
+<div class="admin-card">
+<div class="admin-card-header">
+<h6>Recent Student Enrollments</h6>
+<button class="btn-admin-outline btn-sm" onclick="adminNavigate('students')">View All</button>
+</div>
+<div class="table-responsive">
+<table class="admin-table" id="recentStudentsTable">
+<thead>
+<tr>
+<th>Student</th>
+<th>Course</th>
+<th>Date</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody id="recentStudentsTbody"></tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="col-lg-5">
+<div class="admin-card">
+<div class="admin-card-header">
+<h6>Recent Activity</h6>
+</div>
+<div class="admin-card-body" id="recentActivity"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- ==== STUDENTS ==== -->
+<div class="admin-section" id="section-students">
+<div class="admin-section-header">
+<h4>Student Management</h4>
+<button class="btn-admin-primary" onclick="openAddStudentModal()"><i class="bi bi-plus-circle me-1"></i>Add
+              Student</button>
+</div>
+<div class="admin-card">
+<div class="admin-card-header">
+<div class="admin-filters">
+<div class="admin-search">
+<i class="bi bi-search"></i>
+<input "="" id="studentSearch" oninput="renderStudentsTable()" placeholder="Search students" type="text"/>
+</div>
+<select class="admin-filter-select" id="studentStatusFilter" onchange="renderStudentsTable()">
+<option value="all">All Status</option>
+<option value="Active">Active</option>
+<option value="Inactive">Inactive</option>
+<option value="Suspended">Suspended</option>
+</select>
+</div>
+</div>
+<div class="table-responsive">
+<table class="admin-table">
+<thead>
+<tr>
+<th onclick="sortStudents('name')">Student <i class="bi bi-arrow-down-up sort-icon"></i></th>
+<th>Email</th>
+<th onclick="sortStudents('enrollDate')">Enrolled <i class="bi bi-arrow-down-up sort-icon"></i></th>
+<th>Courses</th>
+<th>Status</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody id="studentsTbody"></tbody>
+</table>
+</div>
+<div class="admin-no-results d-none" id="noStudentsResult"><i class="bi bi-search"></i>
+<p>No students match your filters.</p>
+</div>
+<div class="p-3" id="studentsPagination" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;border-top:1px solid var(--admin-border);">
+<span id="studentsInfo" style="font-size:.8rem;color:var(--admin-muted);"></span>
+<div class="d-flex gap-1" id="studentsPageBtns"></div>
+</div>
+</div>
+</div>
+<!-- ==== COURSES ==== -->
+<div class="admin-section" id="section-courses">
+<div class="admin-section-header">
+<h4>Course Management</h4>
+<button class="btn-admin-primary" onclick="showToast('Add Course modal - coming soon!','info')"><i class="bi bi-plus-circle me-1"></i>Add Course</button>
+</div>
+<div class="admin-card">
+<div class="admin-card-header">
+<div class="admin-filters">
+<div class="admin-search"><i class="bi bi-search"></i><input "="" id="courseSearch" oninput="renderCoursesTable()" placeholder="Search courses" type="text"/></div>
+<select class="admin-filter-select" id="courseLevelFilter" onchange="renderCoursesTable()">
+<option value="all">All Levels</option>
+<option value="Beginner">Beginner</option>
+<option value="Intermediate">Intermediate</option>
+<option value="Advanced">Advanced</option>
+</select>
+</div>
+</div>
+<div class="table-responsive">
+<table class="admin-table">
+<thead>
+<tr>
+<th>Course</th>
+<th>Instructor</th>
+<th>Level</th>
+<th>Price</th>
+<th>Students</th>
+<th>Rating</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody id="coursesTbody"></tbody>
+</table>
+</div>
+<div class="admin-no-results d-none" id="noCoursesResult"><i class="bi bi-search"></i>
+<p>No courses found.</p>
+</div>
+</div>
+</div>
+<!-- ==== LIVE CLASSES ==== -->
+<div class="admin-section" id="section-live-classes">
+<div class="admin-section-header">
+<h4>Live Class Management</h4>
+<button class="btn-admin-primary" onclick="showToast('Add Class modal - coming soon!','info')"><i class="bi bi-plus-circle me-1"></i>Schedule Class</button>
+</div>
+<div class="admin-card">
+<div class="admin-card-header">
+<div class="admin-filters">
+<div class="admin-search"><i class="bi bi-search"></i><input "="" id="classSearch" oninput="renderClassesTable()" placeholder="Search classes" type="text"/></div>
+<select class="admin-filter-select" id="classStatusFilter" onchange="renderClassesTable()">
+<option value="all">All Status</option>
+<option value="Upcoming">Upcoming</option>
+<option value="Completed">Completed</option>
+</select>
+</div>
+</div>
+<div class="table-responsive">
+<table class="admin-table">
+<thead>
+<tr>
+<th>Title</th>
+<th>Instructor</th>
+<th>Date</th>
+<th>Time</th>
+<th>Platform</th>
+<th>Status</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody id="classesTbody"></tbody>
+</table>
+</div>
+<div class="admin-no-results d-none" id="noClassesResult"><i class="bi bi-search"></i>
+<p>No classes found.</p>
+</div>
+</div>
+</div>
+<!-- ==== ASSIGNMENTS ==== -->
+<div class="admin-section" id="section-assignments">
+<div class="admin-section-header">
+<h4>Assignment Management</h4>
+<button class="btn-admin-primary" onclick="showToast('Create Assignment - coming soon!','info')"><i class="bi bi-plus-circle me-1"></i>Create Assignment</button>
+</div>
+<div class="admin-card">
+<div class="admin-card-header">
+<div class="admin-filters">
+<div class="admin-search"><i class="bi bi-search"></i><input "="" id="assignSearch" oninput="renderAssignmentsTable()" placeholder="Search assignments" type="text"/></div>
+<select class="admin-filter-select" id="assignStatusFilter" onchange="renderAssignmentsTable()">
+<option value="all">All Status</option>
+<option value="Pending">Pending</option>
+<option value="Submitted">Submitted</option>
+<option value="Graded">Graded</option>
+</select>
+</div>
+</div>
+<div class="table-responsive">
+<table class="admin-table">
+<thead>
+<tr>
+<th>Assignment</th>
+<th>Course</th>
+<th>Student</th>
+<th>Due Date</th>
+<th>Status</th>
+<th>Grade</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody id="assignmentsTbody"></tbody>
+</table>
+</div>
+<div class="admin-no-results d-none" id="noAssignResult"><i class="bi bi-search"></i>
+<p>No assignments found.</p>
+</div>
+</div>
+</div>
+<!-- ==== BLOG ==== -->
+<div class="admin-section" id="section-blog">
+<div class="admin-section-header">
+<h4>Blog Post Management</h4>
+<button class="btn-admin-primary" onclick="showToast('Blog editor - coming soon!','info')"><i class="bi bi-plus-circle me-1"></i>New Post</button>
+</div>
+<div class="admin-card">
+<div class="admin-card-header">
+<div class="admin-filters">
+<div class="admin-search"><i class="bi bi-search"></i><input "="" id="blogAdminSearch" oninput="renderBlogTable()" placeholder="Search posts" type="text"/></div>
+<select class="admin-filter-select" id="blogCatFilter" onchange="renderBlogTable()">
+<option value="all">All Categories</option>
+</select>
+</div>
+</div>
+<div class="table-responsive">
+<table class="admin-table">
+<thead>
+<tr>
+<th>Title</th>
+<th>Author</th>
+<th>Category</th>
+<th>Date</th>
+<th>Read Time</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody id="blogTbody"></tbody>
+</table>
+</div>
+<div class="admin-no-results d-none" id="noBlogAdminResult"><i class="bi bi-search"></i>
+<p>No blog posts found.</p>
+</div>
+</div>
+</div>
+<!-- ==== ENROLLMENTS ==== -->
+<div class="admin-section" id="section-enrollments">
+<div class="admin-section-header">
+<h4>Enrollment Management</h4>
+</div>
+<div class="admin-card">
+<div class="admin-card-header">
+<div class="admin-filters">
+<div class="admin-search"><i class="bi bi-search"></i><input "="" id="enrollSearch" oninput="renderEnrollmentsTable()" placeholder="Search enrollments" type="text"/></div>
+</div>
+</div>
+<div class="table-responsive">
+<table class="admin-table">
+<thead>
+<tr>
+<th>Student</th>
+<th>Course</th>
+<th>Date</th>
+<th>Progress</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody id="enrollmentsTbody"></tbody>
+</table>
+</div>
+<div class="admin-no-results d-none" id="noEnrollResult"><i class="bi bi-search"></i>
+<p>No enrollments found.</p>
+</div>
+</div>
+</div>
+<!-- ==== REVENUE ==== -->
+<div class="admin-section" id="section-revenue">
+<div class="admin-section-header">
+<h4>Revenue Overview</h4>
+</div>
+<div class="row g-3 mb-4" id="revenueCards"></div>
+<div class="admin-card">
+<div class="admin-card-header">
+<h6>Revenue by Course</h6>
+</div>
+<div class="table-responsive">
+<table class="admin-table">
+<thead>
+<tr>
+<th>Course</th>
+<th>Enrollments</th>
+<th>Price</th>
+<th>Revenue</th>
+<th>% of Total</th>
+</tr>
+</thead>
+<tbody id="revenueTbody"></tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- ==== RESOURCES ==== -->
+<div class="admin-section" id="section-resources">
+<div class="admin-section-header">
+<h4>Free Resources</h4>
+<button class="btn-admin-primary" onclick="showToast('Upload Resource - coming soon!','info')"><i class="bi bi-upload me-1"></i>Upload Resource</button>
+</div>
+<div class="admin-card">
+<div class="admin-card-header">
+<div class="admin-filters">
+<div class="admin-search"><i class="bi bi-search"></i><input "="" id="resourceAdminSearch" oninput="renderResourcesTable()" placeholder="Search resources" type="text"/></div>
+<select class="admin-filter-select" id="resourceTypeFilter" onchange="renderResourcesTable()">
+<option value="all">All Types</option>
+<option value="PDF">PDF</option>
+<option value="Excel">Excel</option>
+<option value="Video">Video</option>
+</select>
+</div>
+</div>
+<div class="table-responsive">
+<table class="admin-table">
+<thead>
+<tr>
+<th>Title</th>
+<th>Type</th>
+<th>Size</th>
+<th>Downloads</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody id="resourcesTbody"></tbody>
+</table>
+</div>
+<div class="admin-no-results d-none" id="noResourceAdminResult"><i class="bi bi-search"></i>
+<p>No resources found.</p>
+</div>
+</div>
+</div>
+<!-- ==== TESTIMONIALS ==== -->
+<div class="admin-section" id="section-testimonials">
+<div class="admin-section-header">
+<h4>Testimonial Management</h4>
+</div>
+<div class="row g-4" id="testimonialsAdminGrid"></div>
+</div>
+<!-- ==== SETTINGS ==== -->
+<div class="admin-section" id="section-settings">
+<div class="admin-section-header">
+<h4>System Settings</h4>
+</div>
+<div class="row g-4">
+<div class="col-lg-6">
+<div class="admin-card">
+<div class="admin-card-header">
+<h6>Academy Info</h6>
+</div>
+<div class="admin-card-body">
+<div class="mb-3"><label class="form-label" style="font-size:.85rem;color:var(--admin-muted);">Academy
+                      Name</label><input class="form-control" style="background:var(--admin-input);border-color:var(--admin-border);color:var(--admin-text);" type="text" value="TradingAcademy"/>
+</div>
+<div class="mb-3"><label class="form-label" style="font-size:.85rem;color:var(--admin-muted);">Contact
+                      Email</label><input class="form-control" pattern="[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+[.][A-Za-z]{2,}" style="background:var(--admin-input);border-color:var(--admin-border);color:var(--admin-text);" title="Enter a valid email address such as name@example.com" type="email" value="info@tradingacademy.in"/>
+</div>
+<div class="mb-3"><label class="form-label" style="font-size:.85rem;color:var(--admin-muted);">Support
+                      Phone</label><input class="form-control" style="background:var(--admin-input);border-color:var(--admin-border);color:var(--admin-text);" type="text" value="+91 800 123 4567"/>
+</div>
+<button class="btn-admin-primary" onclick="showToast('Settings saved!','success')">Save
+                    Changes</button>
+</div>
+</div>
+</div>
+<div class="col-lg-6">
+<div class="admin-card">
+<div class="admin-card-header">
+<h6>Admin Account</h6>
+</div>
+<div class="admin-card-body">
+<p style="font-size:.875rem;color:var(--admin-muted);">Logged in as <strong id="adminSettingsEmail" style="color:var(--admin-text);"></strong></p>
+<button class="btn-admin-outline" onclick="showToast('Change password - coming soon!','info')"><i class="bi bi-lock me-1"></i>Change Password</button>
+<hr style="border-color:var(--admin-border);margin:1rem 0;"/>
+<button class="btn-admin-danger" onclick="AUTH.logout()"><i class="bi bi-power me-1"></i>Logout from
+                    Admin</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><!-- /admin-content -->
+</main>
+</div><!-- /admin-wrapper -->
+<!-- ADD STUDENT MODAL -->
+<div class="modal fade admin-modal" id="addStudentModal" tabindex="-1">
+<div class="modal-dialog modal-dialog-centered">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title">Add New Student</h5>
+<button class="btn-close" data-bs-dismiss="modal" type="button"></button>
+</div>
+<div class="modal-body">
+<form id="addStudentForm">
+<div class="mb-3"><label class="form-label">Full Name</label><input class="form-control" id="newStudentName" minlength="2" pattern="[A-Za-z][A-Za-z .'-]{1,}" required="" title="Please enter at least 2 valid name characters" type="text"/></div>
+<div class="mb-3"><label class="form-label">Email Address</label><input class="form-control" id="newStudentEmail" pattern="[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+[.][A-Za-z]{2,}" required="" title="Enter a valid email address such as name@example.com" type="email"/></div>
+<div class="mb-3"><label class="form-label">Status</label>
+<select class="form-select" id="newStudentStatus">
+<option value="Active">Active</option>
+<option value="Inactive">Inactive</option>
+</select>
+</div>
+</form>
+</div>
+<div class="modal-footer">
+<button class="btn-admin-outline" data-bs-dismiss="modal">Cancel</button>
+<button class="btn-admin-primary" onclick="addStudent()"><i class="bi bi-plus-circle me-1"></i>Add
+            Student</button>
+</div>
+</div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/auth.js"></script>
+<script>
+    // "" Guard: admin only """"""""""""""""""""""""""""""""""""""
+    (function () {
+      const user = AUTH.getCurrentUser();
+      if (!user) { window.location.href = 'login.html'; return; }
+      if (user.role !== 'admin') { window.location.href = 'dashboard.html'; return; }
+      document.getElementById('adminUserDisplay').textContent = user.name;
+      document.getElementById('adminSettingsEmail').textContent = user.email;
+    })();
+
+    // "" Clock """"""""""""""""""""""""""""""""""""""""""""""""""
+    function updateClock() {
+      document.getElementById('adminDateTime').textContent = new Date().toLocaleString('en-IN', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+    }
+    updateClock(); setInterval(updateClock, 1000);
+
+    // "" Navigation """""""""""""""""""""""""""""""""""""""""""""
+    const sectionTitles = {
+      overview: 'Dashboard', students: 'Student Management', courses: 'Course Management',
+      'live-classes': 'Live Class Management', assignments: 'Assignment Management',
+      blog: 'Blog Post Management', enrollments: 'Enrollment Management',
+      revenue: 'Revenue Overview', resources: 'Free Resources',
+      testimonials: 'Testimonial Management', settings: 'System Settings'
+    };
+
+    function adminNavigate(id) {
+      document.querySelectorAll('.admin-section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.admin-nav-item[data-section]').forEach(n => n.classList.remove('active'));
+      const sec = document.getElementById('section-' + id);
+      const nav = document.querySelector('.admin-nav-item[data-section="' + id + '"]');
+      if (sec) sec.classList.add('active');
+      if (nav) nav.classList.add('active');
+      document.getElementById('adminTopbarTitle').textContent = sectionTitles[id] || id;
+      document.getElementById('adminSidebar').classList.remove('open');
+      document.getElementById('adminOverlay').classList.remove('show');
+    }
+
+    document.querySelectorAll('.admin-nav-item[data-section]').forEach(item => {
+      item.addEventListener('click', function () { adminNavigate(this.dataset.section); });
+    });
+
+    // Mobile sidebar
+    document.getElementById('adminSidebarToggle').addEventListener('click', function () {
+      document.getElementById('adminSidebar').classList.toggle('open');
+      document.getElementById('adminOverlay').classList.toggle('show');
+    });
+    document.getElementById('adminOverlay').addEventListener('click', function () {
+      document.getElementById('adminSidebar').classList.remove('open');
+      this.classList.remove('show');
+    });
+
+    // Logout
+    ['adminLogoutBtn', 'adminLogoutBtnTop'].forEach(id => {
+      document.getElementById(id)?.addEventListener('click', () => AUTH.logout());
+    });
+
+    // "" Data helpers """""""""""""""""""""""""""""""""""""""""""
+    function getAdminStudents() {
+      return JSON.parse(localStorage.getItem('admin-students') || 'null') || ACADEMY.students;
+    }
+
+    function saveAdminStudents(students) {
+      localStorage.setItem('admin-students', JSON.stringify(students));
+    }
+
+    // "" Overview """""""""""""""""""""""""""""""""""""""""""""""
+    function loadOverview() {
+      const students = getAdminStudents();
+      document.getElementById('ovStudents').textContent = students.length;
+      document.getElementById('navStudentCount').textContent = students.length;
+      document.getElementById('ovCourses').textContent = ACADEMY.courses.length;
+      document.getElementById('ovRevenue').textContent = 'Rs. 4.2L';
+      document.getElementById('ovEnrollments').textContent = '247';
+
+      // Recent students
+      document.getElementById('recentStudentsTbody').innerHTML = students.slice(0, 6).map(s => {
+        const course = ACADEMY.courses[Math.floor(Math.random() * ACADEMY.courses.length)];
+        return `<tr>
+      <td><strong>${s.name}</strong></td>
+      <td style="font-size:.8rem;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${course.title}</td>
+      <td style="font-size:.8rem;">${s.enrollDate}</td>
+      <td><span class="status-badge status-${s.status.toLowerCase()}">${s.status}</span></td>
+    </tr>`;
+      }).join('');
+
+      // Activity
+      document.getElementById('recentActivity').innerHTML = [
+        { dot: '#10b981', text: 'New student enrolled: Priya Sharma', time: '2 min ago' },
+        { dot: '#3b82f6', text: 'Live class scheduled: Options Trading', time: '15 min ago' },
+        { dot: '#f59e0b', text: 'New blog post published', time: '1 hr ago' },
+        { dot: '#06b6d4', text: 'Assignment graded: Technical Analysis', time: '2 hrs ago' },
+        { dot: '#10b981', text: 'Resource uploaded: Risk Cheatsheet PDF', time: '3 hrs ago' },
+        { dot: '#f87171', text: 'Student suspended: Ravi Mehta', time: '5 hrs ago' },
+      ].map(a => `
+    <div class="admin-activity-item">
+      <div class="admin-activity-dot" style="background:${a.dot};"></div>
+      <div><p>${a.text}</p><small>${a.time}</small></div>
+    </div>`).join('');
+    }
+
+    // "" Students Table """""""""""""""""""""""""""""""""""""""""
+    let studentSortKey = 'name', studentSortDir = 1;
+    let studentPage = 1, studentsPerPage = 8;
+
+    function sortStudents(key) {
+      if (studentSortKey === key) studentSortDir *= -1;
+      else { studentSortKey = key; studentSortDir = 1; }
+      renderStudentsTable();
+    }
+
+    function renderStudentsTable() {
+      const q = (document.getElementById('studentSearch')?.value || '').toLowerCase();
+      const status = document.getElementById('studentStatusFilter')?.value || 'all';
+      const students = getAdminStudents();
+
+      let filtered = students.filter(s => {
+        const qMatch = !q || s.name.toLowerCase().includes(q) || s.email.toLowerCase().includes(q) || s.city.toLowerCase().includes(q);
+        const stMatch = status === 'all' || s.status === status;
+        return qMatch && stMatch;
+      }).sort((a, b) => {
+        const av = a[studentSortKey] || '', bv = b[studentSortKey] || '';
+        return av < bv ? -studentSortDir : av > bv ? studentSortDir : 0;
+      });
+
+      const total = filtered.length;
+      const start = (studentPage - 1) * studentsPerPage;
+      const page = filtered.slice(start, start + studentsPerPage);
+
+      const tbody = document.getElementById('studentsTbody');
+      const noRes = document.getElementById('noStudentsResult');
+
+      if (!filtered.length) { tbody.innerHTML = ''; noRes.classList.remove('d-none'); }
+      else {
+        noRes.classList.add('d-none');
+        tbody.innerHTML = page.map(s => `
+      <tr>
+        <td><strong>${s.name}</strong><br><small style="color:var(--admin-muted);">${s.city}</small></td>
+        <td style="font-size:.825rem;">${s.email}</td>
+        <td style="font-size:.825rem;">${s.enrollDate}</td>
+        <td><span class="badge" style="background:rgba(59,130,246,.15);color:#60a5fa;font-size:.75rem;">${s.courses} courses</span></td>
+        <td><span class="status-badge status-${s.status.toLowerCase()}">${s.status}</span></td>
+        <td>
+          <div class="admin-actions">
+            <button class="action-btn action-view"   onclick="showToast('Viewing ${s.name}','info')" title="View"><i class="bi bi-eye"></i></button>
+            <button class="action-btn action-edit"   onclick="showToast('Editing ${s.name}','info')" title="Edit"><i class="bi bi-pencil"></i></button>
+            <button class="action-btn action-delete" onclick="deleteStudent('${s.id}')" title="Delete"><i class="bi bi-trash"></i></button>
+          </div>
+        </td>
+      </tr>`).join('');
+      }
+
+      document.getElementById('studentsInfo').textContent = `Showing ${start + 1}-${Math.min(start + studentsPerPage, total)} of ${total} students`;
+      const pages = Math.ceil(total / studentsPerPage);
+      document.getElementById('studentsPageBtns').innerHTML = Array.from({ length: pages }, (_, i) =>
+        `<button onclick="studentPage=${i + 1};renderStudentsTable();" style="width:30px;height:30px;border-radius:6px;border:1px solid var(--admin-border);background:${studentPage === i + 1 ? 'var(--admin-accent)' : 'var(--admin-input)'};color:${studentPage === i + 1 ? '#fff' : 'var(--admin-muted)'};cursor:pointer;font-size:.8rem;">${i + 1}</button>`
+      ).join('');
+    }
+
+    function deleteStudent(id) {
+      if (!confirm('Delete this student? This cannot be undone.')) return;
+      const students = getAdminStudents().filter(s => s.id !== id);
+      saveAdminStudents(students);
+      renderStudentsTable();
+      loadOverview();
+      showToast('Student deleted.', 'danger');
+    }
+
+    function openAddStudentModal() {
+      document.getElementById('newStudentName').value = '';
+      document.getElementById('newStudentEmail').value = '';
+      new bootstrap.Modal(document.getElementById('addStudentModal')).show();
+    }
+
+    function addStudent() {
+      const name = document.getElementById('newStudentName').value.trim();
+      const email = document.getElementById('newStudentEmail').value.trim();
+      const status = document.getElementById('newStudentStatus').value;
+      if (!name || !email) { showToast('Please fill all fields.', 'danger'); return; }
+
+      const students = getAdminStudents();
+      students.unshift({
+        id: 'S' + Date.now(), name, email, city: 'Mumbai',
+        status, enrollDate: new Date().toISOString().split('T')[0], courses: 0
+      });
+      saveAdminStudents(students);
+      bootstrap.Modal.getInstance(document.getElementById('addStudentModal'))?.hide();
+      renderStudentsTable();
+      loadOverview();
+      showToast('Student added successfully!', 'success');
+    }
+
+    // "" Courses Table """"""""""""""""""""""""""""""""""""""""""
+    function renderCoursesTable() {
+      const q = (document.getElementById('courseSearch')?.value || '').toLowerCase();
+      const level = document.getElementById('courseLevelFilter')?.value || 'all';
+      const tbody = document.getElementById('coursesTbody');
+      const noRes = document.getElementById('noCoursesResult');
+
+      const filtered = ACADEMY.courses.filter(c => {
+        const qm = !q || c.title.toLowerCase().includes(q) || c.instructor.toLowerCase().includes(q);
+        const lm = level === 'all' || c.level === level;
+        return qm && lm;
+      });
+
+      if (!filtered.length) { tbody.innerHTML = ''; noRes.classList.remove('d-none'); return; }
+      noRes.classList.add('d-none');
+      tbody.innerHTML = filtered.map(c => `
+    <tr>
+      <td><strong>${c.title}</strong><br><small style="color:var(--admin-muted);font-size:.75rem;">${c.category}</small></td>
+      <td style="font-size:.825rem;">${c.instructor}</td>
+      <td><span class="status-badge status-${c.level.toLowerCase()}">${c.level}</span></td>
+      <td>Rs. ${c.price.toLocaleString('en-IN')}</td>
+      <td>${c.students.toLocaleString('en-IN')}</td>
+      <td><i class="bi bi-star-fill" style="color:#f59e0b;font-size:.8rem;"></i> ${c.rating}</td>
+      <td><div class="admin-actions">
+        <a href="course-details.html?id=${c.id}" target="_blank" class="action-btn action-view" title="View"><i class="bi bi-eye"></i></a>
+        <button class="action-btn action-edit"   onclick="showToast('Edit course - coming soon!','info')" title="Edit"><i class="bi bi-pencil"></i></button>
+        <button class="action-btn action-delete" onclick="showToast('Delete course - coming soon!','danger')" title="Delete"><i class="bi bi-trash"></i></button>
+      </div></td>
+    </tr>`).join('');
+    }
+
+    // "" Live Classes Table """""""""""""""""""""""""""""""""""""
+    function renderClassesTable() {
+      const q = (document.getElementById('classSearch')?.value || '').toLowerCase();
+      const status = document.getElementById('classStatusFilter')?.value || 'all';
+      const tbody = document.getElementById('classesTbody');
+      const noRes = document.getElementById('noClassesResult');
+
+      const filtered = ACADEMY.liveClasses.filter(c => {
+        const qm = !q || c.title.toLowerCase().includes(q) || c.instructor.toLowerCase().includes(q);
+        const sm = status === 'all' || c.status === status;
+        return qm && sm;
+      });
+
+      if (!filtered.length) { tbody.innerHTML = ''; noRes.classList.remove('d-none'); return; }
+      noRes.classList.add('d-none');
+      tbody.innerHTML = filtered.map(c => `
+    <tr>
+      <td><strong>${c.title}</strong></td>
+      <td>${c.instructor}</td>
+      <td>${c.date}</td>
+      <td>${c.time} IST</td>
+      <td>${c.platform}</td>
+      <td><span class="status-badge status-${c.status.toLowerCase()}">${c.status}</span></td>
+      <td><div class="admin-actions">
+        <a href="${c.link}" target="_blank" rel="noopener" class="action-btn action-view" title="Open Link"><i class="bi bi-box-arrow-up-right"></i></a>
+        <button class="action-btn action-edit"   onclick="showToast('Edit class - coming soon!','info')" title="Edit"><i class="bi bi-pencil"></i></button>
+        <button class="action-btn action-delete" onclick="showToast('Cancel class - coming soon!','danger')" title="Cancel"><i class="bi bi-trash"></i></button>
+      </div></td>
+    </tr>`).join('');
+    }
+
+    // "" Assignments Table """"""""""""""""""""""""""""""""""""""
+    function renderAssignmentsTable() {
+      const q = (document.getElementById('assignSearch')?.value || '').toLowerCase();
+      const status = document.getElementById('assignStatusFilter')?.value || 'all';
+      const tbody = document.getElementById('assignmentsTbody');
+      const noRes = document.getElementById('noAssignResult');
+      const students = getAdminStudents();
+
+      const filtered = ACADEMY.assignments.filter(a => {
+        const course = ACADEMY.courses.find(c => c.id === a.courseId);
+        const qm = !q || a.title.toLowerCase().includes(q) || course?.title.toLowerCase().includes(q);
+        const sm = status === 'all' || a.status === status;
+        return qm && sm;
+      });
+
+      if (!filtered.length) { tbody.innerHTML = ''; noRes.classList.remove('d-none'); return; }
+      noRes.classList.add('d-none');
+      tbody.innerHTML = filtered.map((a, i) => {
+        const course = ACADEMY.courses.find(c => c.id === a.courseId);
+        const student = students[i % students.length];
+        return `<tr>
+      <td><strong>${a.title}</strong><br><small style="color:var(--admin-muted);font-size:.75rem;">${a.description.substring(0, 60)}"</small></td>
+      <td style="font-size:.8rem;">${course?.title || '-'}</td>
+      <td style="font-size:.825rem;">${student?.name || '-'}</td>
+      <td style="font-size:.825rem;">${a.dueDate}</td>
+      <td><span class="status-badge status-${a.status.toLowerCase()}">${a.status}</span></td>
+      <td>${a.grade ? `<strong style="color:#34d399;">${a.grade}</strong>` : '-'}</td>
+      <td><div class="admin-actions">
+        ${a.status === 'Submitted' ? `<button class="action-btn action-approve" onclick="showToast('Grade submitted!','success')" title="Grade"><i class="bi bi-check-lg"></i></button>` : ''}
+        <button class="action-btn action-download" onclick="showToast('Downloading assignment"','info')" title="Download"><i class="bi bi-download"></i></button>
+      </div></td>
+    </tr>`;
+      }).join('');
+    }
+
+    // "" Blog Table """""""""""""""""""""""""""""""""""""""""""""
+    function renderBlogTable() {
+      const q = (document.getElementById('blogAdminSearch')?.value || '').toLowerCase();
+      const cat = document.getElementById('blogCatFilter')?.value || 'all';
+      const tbody = document.getElementById('blogTbody');
+      const noRes = document.getElementById('noBlogAdminResult');
+
+      const filtered = ACADEMY.blogs.filter(b => {
+        const qm = !q || b.title.toLowerCase().includes(q) || b.author.toLowerCase().includes(q);
+        const cm = cat === 'all' || b.category === cat;
+        return qm && cm;
+      });
+
+      if (!filtered.length) { tbody.innerHTML = ''; noRes.classList.remove('d-none'); return; }
+      noRes.classList.add('d-none');
+      tbody.innerHTML = filtered.map(b => `
+    <tr>
+      <td><strong>${b.title}</strong></td>
+      <td style="font-size:.825rem;">${b.author}</td>
+      <td><span class="status-badge status-active">${b.category}</span></td>
+      <td style="font-size:.825rem;">${b.date}</td>
+      <td style="font-size:.825rem;">${b.readTime}</td>
+      <td><div class="admin-actions">
+        <a href="blog-details.html?id=${b.id}" target="_blank" class="action-btn action-view" title="View"><i class="bi bi-eye"></i></a>
+        <button class="action-btn action-edit"   onclick="showToast('Blog editor - coming soon!','info')" title="Edit"><i class="bi bi-pencil"></i></button>
+        <button class="action-btn action-delete" onclick="showToast('Delete post - coming soon!','danger')" title="Delete"><i class="bi bi-trash"></i></button>
+      </div></td>
+    </tr>`).join('');
+    }
+
+    // "" Enrollments Table """"""""""""""""""""""""""""""""""""""
+    function renderEnrollmentsTable() {
+      const q = (document.getElementById('enrollSearch')?.value || '').toLowerCase();
+      const enrollments = JSON.parse(localStorage.getItem('tm-enrollments') || '[]');
+      const tbody = document.getElementById('enrollmentsTbody');
+      const noRes = document.getElementById('noEnrollResult');
+
+      if (!enrollments.length) {
+        tbody.innerHTML = '';
+        noRes.classList.remove('d-none');
+        noRes.querySelector('p').textContent = 'No student enrollments yet.';
+        return;
+      }
+
+      const filtered = enrollments.filter(e => {
+        const course = ACADEMY.courses.find(c => c.id === e.courseId);
+        return !q || course?.title.toLowerCase().includes(q);
+      });
+
+      if (!filtered.length) { tbody.innerHTML = ''; noRes.classList.remove('d-none'); return; }
+      noRes.classList.add('d-none');
+
+      tbody.innerHTML = filtered.map(e => {
+        const course = ACADEMY.courses.find(c => c.id === e.courseId);
+        return `<tr>
+      <td>Demo Student</td>
+      <td>${course?.title || '-'}</td>
+      <td>${e.enrollDate}</td>
+      <td>
+        <div style="display:flex;align-items:center;gap:.5rem;">
+          <div style="flex:1;height:6px;background:var(--admin-border);border-radius:3px;overflow:hidden;">
+            <div style="width:${e.progress || 0}%;height:100%;background:var(--admin-accent);border-radius:3px;"></div>
+          </div>
+          <span style="font-size:.75rem;color:var(--admin-muted);">${e.progress || 0}%</span>
+        </div>
+      </td>
+      <td><div class="admin-actions">
+        <button class="action-btn action-view"   onclick="showToast('Viewing enrollment"','info')"><i class="bi bi-eye"></i></button>
+        <button class="action-btn action-delete" onclick="showToast('Enrollment removed.','danger')"><i class="bi bi-trash"></i></button>
+      </div></td>
+    </tr>`;
+      }).join('');
+    }
+
+    // "" Revenue """"""""""""""""""""""""""""""""""""""""""""""""
+    function loadRevenue() {
+      const totalRevenue = ACADEMY.courses.reduce((s, c) => s + c.price * Math.floor(c.students * 0.1), 0);
+      document.getElementById('revenueCards').innerHTML = [
+        { label: 'Total Revenue', value: 'Rs. ' + totalRevenue.toLocaleString('en-IN'), icon: 'bi-currency-rupee', color: 'rgba(16,185,129,.1)', icolor: '#34d399' },
+        { label: 'Monthly Revenue', value: 'Rs. 4,20,000', icon: 'bi-graph-up', color: 'rgba(59,130,246,.1)', icolor: '#60a5fa' },
+        { label: 'Avg Course Revenue', value: 'Rs. ' + Math.floor(totalRevenue / ACADEMY.courses.length).toLocaleString('en-IN'), icon: 'bi-bar-chart-fill', color: 'rgba(245,158,11,.1)', icolor: '#fbbf24' },
+        { label: 'Active Subscriptions', value: '312', icon: 'bi-people-fill', color: 'rgba(239,68,68,.1)', icolor: '#f87171' },
+      ].map(s => `<div class="col-6 col-md-3"><div class="admin-stat-card"><div class="admin-stat-icon" style="background:${s.color};color:${s.icolor};"><i class="bi ${s.icon}"></i></div><div><div class="admin-stat-num">${s.value}</div><div class="admin-stat-label">${s.label}</div></div></div></div>`).join('');
+
+      document.getElementById('revenueTbody').innerHTML = ACADEMY.courses.map(c => {
+        const rev = c.price * Math.floor(c.students * 0.1);
+        const pct = ((rev / totalRevenue) * 100).toFixed(1);
+        return `<tr>
+      <td><strong>${c.title}</strong></td>
+      <td>${Math.floor(c.students * 0.1).toLocaleString('en-IN')}</td>
+      <td>Rs. ${c.price.toLocaleString('en-IN')}</td>
+      <td><strong style="color:#34d399;">Rs. ${rev.toLocaleString('en-IN')}</strong></td>
+      <td>
+        <div style="display:flex;align-items:center;gap:.5rem;">
+          <div style="flex:1;height:6px;background:var(--admin-border);border-radius:3px;overflow:hidden;min-width:60px;">
+            <div style="width:${pct}%;height:100%;background:var(--admin-accent);border-radius:3px;"></div>
+          </div>
+          <span style="font-size:.75rem;color:var(--admin-muted);">${pct}%</span>
+        </div>
+      </td>
+    </tr>`;
+      }).sort((a, b) => b - a).join('');
+    }
+
+    // "" Resources Table """"""""""""""""""""""""""""""""""""""""
+    function renderResourcesTable() {
+      const q = (document.getElementById('resourceAdminSearch')?.value || '').toLowerCase();
+      const type = document.getElementById('resourceTypeFilter')?.value || 'all';
+      const tbody = document.getElementById('resourcesTbody');
+      const noRes = document.getElementById('noResourceAdminResult');
+
+      const filtered = ACADEMY.resources.filter(r => {
+        const qm = !q || r.title.toLowerCase().includes(q);
+        const tm = type === 'all' || r.type === type;
+        return qm && tm;
+      });
+
+      if (!filtered.length) { tbody.innerHTML = ''; noRes.classList.remove('d-none'); return; }
+      noRes.classList.add('d-none');
+      tbody.innerHTML = filtered.map(r => `
+    <tr>
+      <td><strong>${r.title}</strong></td>
+      <td><span class="status-badge status-${r.type === 'PDF' ? 'pending' : r.type === 'Excel' ? 'active' : 'upcoming'}">${r.type}</span></td>
+      <td>${r.size || '-'}</td>
+      <td>${r.downloads.toLocaleString('en-IN')}</td>
+      <td><div class="admin-actions">
+        <button class="action-btn action-download" onclick="showToast('Downloading ${r.title}','info')" title="Download"><i class="bi bi-download"></i></button>
+        <button class="action-btn action-edit"     onclick="showToast('Edit resource - coming soon!','info')" title="Edit"><i class="bi bi-pencil"></i></button>
+        <button class="action-btn action-delete"   onclick="showToast('Delete resource - coming soon!','danger')" title="Delete"><i class="bi bi-trash"></i></button>
+      </div></td>
+    </tr>`).join('');
+    }
+
+    // "" Testimonials """""""""""""""""""""""""""""""""""""""""""
+    function loadTestimonials() {
+      document.getElementById('testimonialsAdminGrid').innerHTML = ACADEMY.testimonials.map((t, i) => `
+    <div class="col-md-4">
+      <div class="admin-card">
+        <div class="admin-card-body">
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <img src="${t.image}" alt="${t.name}" style="width:40px;height:40px;border-radius:50%;object-fit:cover;"/>
+            <div><strong style="font-size:.9rem;color:var(--admin-text);">${t.name}</strong><div style="font-size:.75rem;color:var(--admin-muted);">${t.role}</div></div>
+          </div>
+          <div style="color:#f59e0b;font-size:.8rem;margin-bottom:.5rem;">${'...'.repeat(t.rating)}</div>
+          <p style="font-size:.85rem;color:var(--admin-muted);font-style:italic;">"${t.text.substring(0, 120)}""</p>
+          <div class="d-flex gap-2 mt-2">
+            <button class="action-btn action-approve" onclick="showToast('Testimonial approved!','success')"><i class="bi bi-check-lg"></i></button>
+            <button class="action-btn action-delete"  onclick="showToast('Testimonial removed.','danger')"><i class="bi bi-trash"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>`).join('');
+    }
+
+    // "" Blog Categories for filter """""""""""""""""""""""""""""
+    function populateBlogCatFilter() {
+      const cats = [...new Set(ACADEMY.blogs.map(b => b.category))];
+      const sel = document.getElementById('blogCatFilter');
+      cats.forEach(c => { const o = document.createElement('option'); o.value = c; o.textContent = c; sel.appendChild(o); });
+    }
+
+    // "" Toast """""""""""""""""""""""""""""""""""""""""""""""""
+    function showToast(msg, type) {
+      let c = document.getElementById('tc');
+      if (!c) { c = document.createElement('div'); c.id = 'tc'; c.className = 'toast-container position-fixed bottom-0 end-0 p-3'; c.style.zIndex = 9999; document.body.appendChild(c); }
+      const m = { success: 'bg-success', danger: 'bg-danger', warning: 'bg-warning text-dark', info: 'bg-primary' };
+      const t = document.createElement('div');
+      t.className = 'toast align-items-center text-white border-0 ' + (m[type] || m.info);
+      t.setAttribute('role', 'alert');
+      t.innerHTML = `<div class="d-flex"><div class="toast-body fw-semibold">${msg}</div><button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button></div>`;
+      c.appendChild(t);
+      new bootstrap.Toast(t, { delay: 3000 }).show();
+      t.addEventListener('hidden.bs.toast', () => t.remove());
+    }
+
+    // "" Init """"""""""""""""""""""""""""""""""""""""""""""""""
+    loadOverview();
+    renderStudentsTable();
+    renderCoursesTable();
+    renderClassesTable();
+    renderAssignmentsTable();
+    renderBlogTable();
+    renderEnrollmentsTable();
+    renderResourcesTable();
+    loadRevenue();
+    loadTestimonials();
+    populateBlogCatFilter();
+  </script>
+</body>
+</html>

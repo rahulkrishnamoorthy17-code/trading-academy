@@ -1,0 +1,595 @@
+/* ============================================================
+   TRADING ACADEMY — Client Review Final Pass (Oct 2026)
+   Purpose: consistent stock-market identity, button system,
+   alignment, responsive fixes (360/768/1024) and dashboard UX.
+   ============================================================ */
+
+:root {
+  --brand-primary:#2563eb;
+  --brand-primary-dark:#1d4ed8;
+  --brand-primary-soft:rgba(37,99,235,.10);
+  --brand-accent:#f59e0b;
+  --brand-navy:#0a1128;
+  --brand-radius:12px;
+}
+
+/* ---------- Global visual language / spacing ---------- */
+body { overflow-x:hidden !important; }
+img,svg,video,canvas { max-width:100%; }
+.tm-section,.home2-section { padding-block:clamp(3.75rem,6vw,5.5rem) !important; }
+.tm-section > .container,
+.home2-section > .container,
+.tm-page-hero > .container,
+.tm-page-header > .container { max-width:1200px; }
+.tm-section-head { max-width:760px; margin-inline:auto; margin-bottom:clamp(2rem,4vw,3rem); text-align:center; }
+.tm-section-head p { max-width:680px; }
+.tm-section-badge,
+.tm-hero-badge { border-color:rgba(37,99,235,.22) !important; color:var(--brand-primary) !important; background:rgba(37,99,235,.08) !important; }
+html.dark-mode .tm-section-badge,
+html.dark-mode .tm-hero-badge { color:#93c5fd !important; background:rgba(37,99,235,.14) !important; }
+
+/* ---------- Consistent CTA system ---------- */
+.btn {
+  min-height:44px;
+  border-radius:var(--brand-radius) !important;
+  padding:.68rem 1.25rem !important;
+  line-height:1.15 !important;
+  font-weight:700 !important;
+  gap:.35rem;
+  box-shadow:none !important;
+  white-space:normal;
+}
+.btn-sm { min-height:38px; padding:.52rem .85rem !important; font-size:.84rem; }
+.btn-lg { min-height:50px; padding:.8rem 1.55rem !important; font-size:1rem; }
+.btn-primary,
+.btn-cta,
+.btn-secondary,
+.navbar-nav-buttons .btn-primary {
+  background:var(--brand-primary) !important;
+  border:1px solid var(--brand-primary) !important;
+  color:#fff !important;
+  text-shadow:none !important;
+}
+.btn-primary:hover,.btn-primary:focus-visible,
+.btn-cta:hover,.btn-cta:focus-visible,
+.btn-secondary:hover,.btn-secondary:focus-visible,
+.navbar-nav-buttons .btn-primary:hover {
+  background:var(--brand-primary-dark) !important;
+  border-color:var(--brand-primary-dark) !important;
+  color:#fff !important;
+  transform:translateY(-1px) !important;
+  box-shadow:0 8px 20px rgba(37,99,235,.22) !important;
+}
+.btn-outline-primary,
+.btn-cta-outline,
+.btn-outline-secondary {
+  background:transparent !important;
+  border:1px solid rgba(37,99,235,.48) !important;
+  color:var(--brand-primary) !important;
+}
+.btn-outline-primary:hover,.btn-outline-primary:focus-visible,
+.btn-cta-outline:hover,.btn-cta-outline:focus-visible,
+.btn-outline-secondary:hover,.btn-outline-secondary:focus-visible {
+  background:var(--brand-primary-soft) !important;
+  border-color:var(--brand-primary) !important;
+  color:var(--brand-primary-dark) !important;
+  transform:translateY(-1px) !important;
+}
+.tm-hero .btn-cta-outline,
+.tm-cta .btn-cta-outline,
+.home2-hero .btn-outline-light {
+  color:#fff !important;
+  border-color:rgba(255,255,255,.65) !important;
+  background:rgba(255,255,255,.04) !important;
+}
+.tm-hero .btn-cta-outline:hover,
+.tm-cta .btn-cta-outline:hover,
+.home2-hero .btn-outline-light:hover {
+  color:#fff !important;
+  background:rgba(255,255,255,.12) !important;
+  border-color:#fff !important;
+}
+.btn-light {
+  background:#fff !important;
+  border-color:#fff !important;
+  color:var(--brand-primary-dark) !important;
+}
+
+/* ---------- Navbar alignment / branding ---------- */
+.tm-navbar .container { min-width:0; }
+.tm-navbar .navbar-collapse { min-width:0; align-items:center; }
+.tm-navbar .navbar-nav { align-items:center; }
+.tm-navbar .nav-link { min-height:42px; display:flex; align-items:center; }
+.navbar-nav-buttons { align-items:center !important; flex-wrap:nowrap !important; }
+.navbar-nav-buttons > * { flex-shrink:0; }
+#themeToggle,.rtl-toggle-control { min-height:38px !important; height:38px !important; }
+.rtl-toggle-control { width:54px !important; }
+
+/* ---------- Home 01: clearly communicates stock-market training ---------- */
+.page-index .tm-hero {
+  background-image:linear-gradient(110deg,rgba(5,11,20,.96) 0%,rgba(10,17,40,.88) 58%,rgba(10,17,40,.78) 100%),url('../img/blog_nifty_bank.jpg') !important;
+  background-size:cover !important;
+  background-position:center !important;
+}
+.page-index .tm-hero h1 { max-width:720px; }
+.page-index .tm-hero p { max-width:650px !important; color:#cbd5e1 !important; }
+.page-index .tm-hero-img {
+  width:100% !important;
+  aspect-ratio:4/3 !important;
+  object-fit:cover !important;
+  object-position:center !important;
+  border:1px solid rgba(255,255,255,.16) !important;
+  box-shadow:0 28px 60px rgba(0,0,0,.35) !important;
+}
+
+/* Academy journey = how it works / experience / trust */
+.academy-journey { background:linear-gradient(180deg,var(--bg) 0%,var(--bg-alt) 100%); }
+.academy-journey h2 { font-size:clamp(2rem,4vw,3rem); }
+.academy-proof-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.75rem; }
+.academy-proof-grid > div { padding:1rem; border:1px solid var(--border); border-radius:14px; background:var(--bg-card); }
+.academy-proof-grid strong { display:block; color:var(--brand-primary); font-family:'Outfit',sans-serif; font-size:1.25rem; }
+.academy-proof-grid span { display:block; color:var(--text-muted); font-size:.78rem; line-height:1.35; }
+.academy-journey-panel { background:var(--bg-card); border:1px solid var(--border); border-radius:22px; overflow:hidden; box-shadow:var(--shadow-md); }
+.academy-journey-panel > img { width:100%; height:260px; object-fit:cover; display:block; }
+.academy-journey-steps { display:grid; grid-template-columns:1fr 1fr; gap:0; }
+.academy-journey-steps article { display:flex; gap:.9rem; padding:1.15rem; border-top:1px solid var(--border); min-width:0; }
+.academy-journey-steps article:nth-child(odd) { border-right:1px solid var(--border); }
+.academy-journey-steps article > span { width:34px; height:34px; min-width:34px; border-radius:10px; display:grid; place-items:center; background:var(--brand-primary-soft); color:var(--brand-primary); font-weight:800; font-size:.78rem; }
+.academy-journey-steps h5 { margin:0 0 .25rem; font-size:.95rem; }
+.academy-journey-steps p { margin:0; font-size:.8rem; line-height:1.5; color:var(--text-muted); }
+
+/* ---------- Courses: card CTA consistency + alignment ---------- */
+.tm-course-card { border-radius:18px !important; }
+.tm-course-card-img { height:190px !important; }
+.tm-course-card-body { min-width:0; }
+.tm-course-card-body h5 { min-height:2.5em; overflow-wrap:anywhere; }
+.tm-course-card-body > p { min-height:3em; }
+.tm-course-meta { min-height:1.55rem; }
+.tm-course-price { gap:.75rem; min-width:0; align-items:flex-end; }
+.tm-course-price > div:first-child { min-width:78px; }
+.tm-course-price > .d-flex { flex:0 0 auto; min-width:0; }
+.tm-course-price .btn { min-width:72px; }
+#featuredCoursesGrid .tm-course-card,
+#coursesGrid .tm-course-card { height:100%; }
+#featuredCoursesGrid > [class*="col-"],
+#coursesGrid > [class*="col-"] { display:flex; align-items:stretch; }
+.courses-toolbar { padding:1rem; background:var(--bg-card); border:1px solid var(--border); border-radius:16px; }
+.tm-search-bar .form-control { min-height:46px; }
+.course-filter-tabs { min-height:46px; align-items:center; }
+
+/* ---------- Pricing alignment ---------- */
+#pricingGrid > [class*="col-"] { display:flex; align-items:stretch; }
+#pricingGrid .tm-pricing-card { padding:2.85rem 1.4rem 1.5rem !important; min-width:0; overflow:visible; }
+#pricingGrid .tm-pricing-badge { top:.85rem; right:.85rem; max-width:calc(100% - 1.7rem); white-space:nowrap; }
+#pricingGrid .tm-pricing-card > h5 { min-height:1.5rem !important; }
+#pricingGrid .tm-pricing-tagline { min-height:2.5rem !important; }
+#pricingGrid .tm-pricing-price { min-height:3.5rem !important; margin:1rem 0 !important; font-size:clamp(2rem,3vw,2.6rem) !important; }
+#pricingGrid .tm-pricing-features { margin:1rem 0 1.25rem !important; display:flex !important; flex-direction:column; }
+#pricingGrid .tm-pricing-features li { min-height:2.4rem; align-items:flex-start !important; line-height:1.35; overflow-wrap:anywhere; }
+#pricingGrid .tm-pricing-action { margin-top:auto !important; width:100%; min-height:46px; }
+#pricingGrid .tm-pricing-card.featured { border-color:var(--brand-primary) !important; }
+#pricingGrid .tm-pricing-card.featured::before { background:var(--brand-primary) !important; }
+
+/* ---------- Home 02: relevant local images + contrast ---------- */
+.page-home-2 .home2-hero {
+  background:linear-gradient(100deg,rgba(5,11,20,.97) 0%,rgba(10,17,40,.90) 55%,rgba(10,17,40,.82) 100%),url('../img/blog_nifty_bank.jpg') center/cover no-repeat !important;
+}
+.page-home-2 .home2-hero-img-wrap::after { content:''; position:absolute; inset:0; background:linear-gradient(to top,rgba(5,11,20,.26),transparent 48%); pointer-events:none; }
+.page-home-2 .home2-hero-img-wrap > img { width:100%; height:420px; object-fit:cover; object-position:center; display:block; }
+.page-home-2 .home2-market-strip { z-index:2; background:linear-gradient(to top,rgba(5,11,20,.98),rgba(5,11,20,.20)) !important; }
+.page-home-2 .home2-market-strip span { color:#fff !important; text-shadow:0 1px 3px rgba(0,0,0,.75); }
+.page-home-2 .home2-highlight { color:#93c5fd !important; }
+.home2-card { border-color:var(--border) !important; }
+.home2-icon-primary,.home2-icon-secondary,.home2-icon-warning { background:var(--brand-primary-soft) !important; color:var(--brand-primary) !important; }
+.page-home-2 .home2-section .text-primary { color:var(--brand-primary) !important; }
+.home2-free-learning .home2-resource-img { object-fit:cover !important; width:100% !important; aspect-ratio:1/1 !important; height:auto !important; min-height:0 !important; max-height:none !important; }
+.home2-free-learning .row.g-3 > [class*="col-"] { margin-top:0 !important; }
+
+/* ---------- Mentors ---------- */
+#mentorsDetailGrid > [class*="col-"] { display:flex; align-items:stretch; }
+#mentorsDetailGrid .mentor-detail-card { width:100%; }
+#mentorsDetailGrid .mentor-detail-header { min-height:320px !important; }
+#mentorsDetailGrid .mentor-detail-body { min-width:0; }
+
+/* ---------- Contact cards: no email overflow at 360/768 ---------- */
+.page-contact .tm-contact-card { width:100%; padding:1.5rem 1rem; min-width:0; }
+.page-contact .tm-contact-card a,
+.page-contact .tm-contact-card p,
+.page-contact .tm-contact-card h6 { max-width:100%; overflow-wrap:anywhere; word-break:normal; }
+.page-contact .tm-contact-card a[href^="mailto:"] { font-size:clamp(.76rem,1.8vw,.88rem) !important; }
+.page-contact .tm-contact-icon { flex-shrink:0; }
+
+/* ---------- Register at tablet: no brand clipping ---------- */
+.page-register .reg-wrapper { width:100%; max-width:100vw; overflow:hidden; }
+.page-register .reg-left-brand { min-width:0; }
+.page-register .reg-left-brand span { overflow-wrap:anywhere; }
+.page-register .reg-right { min-width:0 !important; }
+
+/* ---------- Legal navbar icon overlap ---------- */
+.legal-policy-page .tm-navbar .container { min-width:0; }
+.legal-policy-page .navbar-nav-buttons { display:flex; align-items:center; gap:.5rem; flex-shrink:0; }
+
+/* ---------- Dashboard: 360 / 768 / 1024 containment + hamburger ---------- */
+.page-dashboard { min-width:0; }
+.page-dashboard .db-wrapper,
+.page-dashboard .db-main,
+.page-dashboard .db-content,
+.page-dashboard .db-section,
+.page-dashboard .row,
+.page-dashboard [class*="col-"] { min-width:0; max-width:100%; }
+.page-dashboard .db-main { width:auto; }
+.page-dashboard .db-content { overflow-x:hidden; }
+.page-dashboard .db-stat-card { height:100%; min-width:0; }
+.page-dashboard .db-stat-card > div:last-child { min-width:0; }
+.page-dashboard .db-stat-label { overflow-wrap:anywhere; line-height:1.25; }
+.page-dashboard .db-course-row,
+.page-dashboard .db-class-card,
+.page-dashboard .db-assignment-card { min-width:0; max-width:100%; }
+.page-dashboard .db-topbar-actions { min-width:0; }
+.page-dashboard .db-icon-btn { flex-shrink:0; }
+.page-dashboard .table-responsive { max-width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+
+/* ---------- RTL/LTR stability ---------- */
+html[dir="ltr"] body { direction:ltr !important; text-align:left; }
+html[dir="rtl"] body { direction:rtl !important; }
+html[dir="ltr"] .tm-navbar .navbar-nav { direction:ltr; }
+html[dir="rtl"] .tm-navbar .navbar-nav { direction:rtl; }
+html[dir="ltr"] .tm-section-head,
+html[dir="rtl"] .tm-section-head { text-align:center; }
+
+/* ---------- Tablet 768 / 1024 ---------- */
+@media (max-width:1199.98px) {
+  .page-dashboard .db-sidebar {
+    width:min(300px,86vw) !important;
+    min-width:0 !important;
+    transform:translateX(-100%) !important;
+    z-index:1060 !important;
+  }
+  html[dir="rtl"] .page-dashboard .db-sidebar { transform:translateX(100%) !important; }
+  .page-dashboard .db-sidebar.open { transform:translateX(0) !important; }
+  .page-dashboard .db-main,
+  html[dir="rtl"] .page-dashboard .db-main { margin:0 !important; width:100%; }
+  .page-dashboard .db-sidebar-toggle { display:flex !important; }
+  .page-dashboard .db-sidebar-overlay.show { display:block !important; }
+}
+
+@media (min-width:768px) and (max-width:991.98px) {
+  /* Sign-up: avoid left brand panel being squeezed at 768 */
+  .page-register .reg-left { display:none !important; }
+  .page-register .reg-right { width:100% !important; max-width:720px; margin-inline:auto; border-left:0 !important; padding:2.5rem 2rem !important; }
+
+  /* Home/Course CTA cards: two-column, buttons always fit */
+  #featuredCoursesGrid > .col-md-4,
+  #coursesGrid > .col-md-4 { width:50% !important; }
+  #featuredCoursesGrid .tm-course-price,
+  #coursesGrid .tm-course-price { flex-direction:column; align-items:stretch !important; gap:.65rem; }
+  #featuredCoursesGrid .tm-course-price > div:first-child,
+  #coursesGrid .tm-course-price > div:first-child { min-width:0; }
+  #featuredCoursesGrid .tm-course-price > .d-flex,
+  #coursesGrid .tm-course-price > .d-flex { width:100%; }
+  #featuredCoursesGrid .tm-course-price .btn,
+  #coursesGrid .tm-course-price .btn { flex:1 1 0; min-width:0; }
+
+  #pricingGrid .tm-pricing-card { padding-inline:1.25rem !important; }
+  #pricingGrid .tm-pricing-features li { min-height:0; }
+}
+
+@media (max-width:767.98px) {
+  .navbar-nav-buttons { flex-wrap:wrap !important; }
+  .tm-navbar .navbar-collapse { max-height:calc(100vh - 80px); overflow-y:auto; }
+  .tm-section,.home2-section { padding-block:3.25rem !important; }
+  .academy-proof-grid { grid-template-columns:1fr; }
+  .academy-journey-steps { grid-template-columns:1fr; }
+  .academy-journey-steps article:nth-child(odd) { border-right:0; }
+  .page-home-2 .home2-hero-img-wrap > img { height:320px; }
+  #featuredCoursesGrid > [class*="col-"],
+  #coursesGrid > [class*="col-"] { width:100% !important; }
+  #pricingGrid > [class*="col-"] { width:100% !important; }
+  #pricingGrid .tm-pricing-card { padding:2.65rem 1.2rem 1.35rem !important; }
+  #pricingGrid .tm-pricing-tagline,
+  #pricingGrid .tm-pricing-card > h5 { min-height:0 !important; }
+  #pricingGrid .tm-pricing-features li { min-height:0; }
+  .page-dashboard .db-content { padding:1.15rem .85rem !important; }
+  .page-dashboard .db-topbar { padding:.7rem .8rem !important; }
+  .page-dashboard .db-section-header { align-items:flex-start; }
+}
+
+@media (max-width:575.98px) {
+  .tm-navbar .container { padding-inline:.75rem; }
+  .tm-brand { min-width:0; }
+  .tm-brand span { font-size:1rem; }
+  .page-index .tm-hero { padding-top:6rem !important; }
+  .page-index .tm-hero .row { gap:1.6rem !important; }
+  .page-index .tm-hero-img { max-height:260px !important; aspect-ratio:16/10 !important; }
+  .page-index .tm-hero .d-flex.flex-wrap.gap-3 { width:100%; }
+  .page-index .tm-hero .btn { width:100%; }
+
+  .tm-course-price { flex-direction:column; align-items:stretch !important; }
+  .tm-course-price > .d-flex { width:100%; }
+  .tm-course-price .btn { flex:1 1 0; min-width:0; }
+
+  .page-contact .tm-contact-card { padding:1.25rem 1rem; }
+  .page-contact .tm-contact-card a[href^="mailto:"] { font-size:.86rem !important; }
+
+  .page-dashboard .row.g-3.mb-4 > .col-6 { width:50%; }
+  .page-dashboard .db-stat-card { flex-direction:column; align-items:flex-start; gap:.65rem; padding:.9rem !important; }
+  .page-dashboard .db-stat-icon { width:42px; height:42px; font-size:1.1rem; }
+  .page-dashboard .db-stat-num { font-size:1.35rem; }
+  .page-dashboard .db-topbar-title { font-size:.95rem; }
+  .page-dashboard .db-topbar-actions { gap:.35rem; }
+  .page-dashboard .db-icon-btn { width:34px; height:34px; }
+  .page-dashboard .rtl-toggle-control { width:48px !important; min-width:48px !important; }
+  .page-dashboard .db-course-row { flex-direction:column; align-items:stretch; }
+  .page-dashboard .db-course-row-img { width:100%; height:150px; }
+  .page-dashboard .db-class-card { align-items:flex-start; }
+  .page-dashboard .db-assignment-header { flex-direction:column; }
+}
+
+@media (max-width:380px) {
+  .tm-brand span { font-size:.92rem; }
+  .navbar-toggler { padding:.3rem .45rem; }
+  .page-index .tm-hero h1 { font-size:clamp(1.85rem,9.6vw,2.2rem) !important; }
+  .page-contact .tm-contact-card a[href^="mailto:"] { font-size:.80rem !important; }
+  .page-dashboard .db-content { padding-inline:.65rem !important; }
+  .page-dashboard .db-topbar-actions .db-icon-btn[href="courses.html"] { display:none; }
+}
+
+/* Brand accent cleanup: blue is the primary interactive color site-wide. */
+.tm-section-head::after { background:var(--brand-primary) !important; }
+.tm-feature-icon,.tm-contact-icon { background:var(--brand-primary-soft) !important; color:var(--brand-primary) !important; }
+#pricingGrid .tm-pricing-badge { background:var(--brand-primary) !important; color:#fff !important; }
+.page-dashboard .db-sidebar { background:var(--brand-navy) !important; }
+.page-dashboard .db-sidebar-brand i,
+.page-dashboard .db-nav-item.active { color:#60a5fa !important; }
+.page-dashboard .db-nav-item.active { background:rgba(37,99,235,.14) !important; border-left-color:var(--brand-primary) !important; }
+html[dir="rtl"] .page-dashboard .db-nav-item.active { border-right-color:var(--brand-primary) !important; border-left-color:transparent !important; }
+.page-dashboard .db-user-avatar { background:linear-gradient(135deg,var(--brand-primary),#60a5fa) !important; }
+.page-dashboard .db-progress-bar { background:linear-gradient(90deg,var(--brand-primary),#60a5fa) !important; }
+.page-dashboard .db-play-btn { background:var(--brand-primary) !important; }
+.page-dashboard .db-cert-card::before { background:var(--brand-primary) !important; }
+.page-dashboard .db-cert-icon { color:var(--brand-primary) !important; }
+
+/* Additional brand consistency refinements. */
+.btn-warning {
+  background:var(--brand-primary) !important;
+  border-color:var(--brand-primary) !important;
+  color:#fff !important;
+}
+.btn-warning:hover,.btn-warning:focus-visible {
+  background:var(--brand-primary-dark) !important;
+  border-color:var(--brand-primary-dark) !important;
+  color:#fff !important;
+}
+.home2-section .btn-outline-primary,
+.home2-section .btn-outline-secondary {
+  color:var(--brand-primary) !important;
+  border-color:rgba(37,99,235,.5) !important;
+  background:transparent !important;
+}
+.home2-section .btn-outline-primary:hover,
+.home2-section .btn-outline-secondary:hover {
+  color:#fff !important;
+  border-color:var(--brand-primary) !important;
+  background:var(--brand-primary) !important;
+}
+.db-sidebar-logo { width:28px; height:28px; display:block; flex:0 0 auto; }
+
+/* Search/filter toolbars follow the same grid and control heights. */
+.page-blog .tm-search-bar,
+.page-courses .tm-search-bar,
+.page-free-resources .tm-search-bar { min-width:0; }
+.page-blog .tm-search-bar .form-control,
+.page-courses .tm-search-bar .form-control,
+.page-free-resources .tm-search-bar .form-control { min-height:46px; }
+.page-blog #blogSearchBtn { min-height:46px; }
+
+@media (max-width:575.98px) {
+  .page-blog .col-lg-8 > .d-flex.gap-2.mb-4 { flex-direction:column; }
+  .page-blog #blogSearchBtn { width:100%; }
+  .page-free-resources .tm-search-bar { max-width:none !important; width:100%; }
+  .page-free-resources .tm-filter-tabs { width:100%; justify-content:flex-start; overflow-x:auto; flex-wrap:nowrap; padding-bottom:.25rem; }
+}
+
+
+/* ============================================================
+   FINAL USER REVIEW — Navbar names / light navbar / Home2 success / dashboard 360+768
+   ============================================================ */
+
+/* Light mode navbar should feel like part of the light site, not a dark strip. */
+html:not(.dark-mode) .tm-navbar,
+html:not(.dark-mode) .tm-navbar.scrolled {
+  background:rgba(255,255,255,.96) !important;
+  border-bottom:1px solid rgba(15,23,42,.10) !important;
+  box-shadow:0 8px 28px rgba(15,23,42,.07) !important;
+  backdrop-filter:blur(22px);
+  -webkit-backdrop-filter:blur(22px);
+}
+html:not(.dark-mode) .tm-navbar .tm-brand { color:#0f172a !important; }
+html:not(.dark-mode) .tm-navbar .nav-link { color:#334155 !important; }
+html:not(.dark-mode) .tm-navbar .nav-link:hover,
+html:not(.dark-mode) .tm-navbar .nav-link.active {
+  color:var(--brand-primary) !important;
+  background:rgba(37,99,235,.08) !important;
+}
+html:not(.dark-mode) .tm-navbar .navbar-nav-buttons .btn:not(.btn-primary) {
+  color:#334155 !important;
+  background:#f8fafc !important;
+  border-color:#dbe3ec !important;
+}
+html:not(.dark-mode) .tm-navbar .navbar-toggler {
+  border-color:#d7e0e9 !important;
+  background:#f8fafc !important;
+}
+html:not(.dark-mode) .tm-navbar .navbar-toggler-icon {
+  background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2851,65,85,0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+@media (max-width:991.98px){
+  html:not(.dark-mode) .tm-navbar .navbar-collapse {
+    background:#fff !important;
+    border-color:#e2e8f0 !important;
+    box-shadow:0 18px 40px rgba(15,23,42,.10);
+  }
+  html:not(.dark-mode) .tm-navbar .dropdown-menu { background:#f8fafc !important; }
+  html:not(.dark-mode) .tm-navbar .dropdown-item { color:#334155 !important; }
+}
+
+/* Home2 Student Success: all testimonial cards always show a consistent local portrait. */
+.page-home-2 #testimonialsGrid2 > [class*="col-"] { display:flex; }
+.page-home-2 #testimonialsGrid2 .tm-testimonial {
+  width:100%; height:100%; display:flex; flex-direction:column;
+}
+.page-home-2 #testimonialsGrid2 .tm-testimonial > p { flex:1; }
+.page-home-2 #testimonialsGrid2 .tm-testimonial-author { margin-top:auto; align-items:center; }
+.page-home-2 #testimonialsGrid2 .tm-testimonial-author img {
+  width:52px !important; height:52px !important; min-width:52px;
+  border-radius:50%; object-fit:cover; object-position:center;
+  border:2px solid rgba(37,99,235,.22); background:#e2e8f0;
+}
+
+/* Dashboard: cleaner aligned containers at 360px and 768px. */
+.page-dashboard .db-stat-card { align-items:center !important; }
+.page-dashboard .db-stat-card > div:last-child { display:flex; flex-direction:column; justify-content:center; }
+.page-dashboard .db-stat-label { margin:0; }
+.page-dashboard .db-section-header > * { min-width:0; }
+.page-dashboard .db-course-row-body h6 { white-space:normal !important; overflow:visible !important; text-overflow:clip !important; }
+
+@media (min-width:576px) and (max-width:991.98px){
+  .page-dashboard .db-content > .db-section > .row.g-3.mb-4 > .col-6,
+  .page-dashboard .db-section.active > .row.g-3.mb-4 > .col-6 {
+    width:50% !important;
+    flex:0 0 50% !important;
+  }
+  .page-dashboard .db-stat-card {
+    min-height:108px;
+    flex-direction:row !important;
+    align-items:center !important;
+    gap:.9rem !important;
+    padding:1rem 1.1rem !important;
+  }
+  .page-dashboard .db-stat-icon { width:46px; height:46px; }
+  .page-dashboard .db-stat-num { font-size:1.45rem; }
+  .page-dashboard .db-stat-label { font-size:.8rem; line-height:1.3; }
+  .page-dashboard .db-content { padding:1.35rem 1.1rem !important; }
+}
+
+@media (max-width:575.98px){
+  .page-dashboard .db-content > .db-section > .row.g-3.mb-4 > .col-6,
+  .page-dashboard .db-section.active > .row.g-3.mb-4 > .col-6 {
+    width:100% !important;
+    flex:0 0 100% !important;
+  }
+  .page-dashboard .db-stat-card {
+    min-height:86px;
+    flex-direction:row !important;
+    align-items:center !important;
+    gap:.85rem !important;
+    padding:.9rem 1rem !important;
+  }
+  .page-dashboard .db-stat-icon { width:44px; height:44px; min-width:44px; }
+  .page-dashboard .db-stat-num { font-size:1.3rem; }
+  .page-dashboard .db-stat-label { font-size:.82rem; line-height:1.25; }
+  .page-dashboard .db-section-header {
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    align-items:stretch !important;
+    gap:.7rem !important;
+  }
+  .page-dashboard .db-section-header .btn,
+  .page-dashboard .db-section-header > a { width:100%; justify-content:center; }
+  .page-dashboard .db-content { padding:1rem .75rem !important; }
+  .page-dashboard .db-topbar { padding:.7rem .7rem !important; }
+  .page-dashboard .db-topbar > div:first-child { min-width:0; }
+  .page-dashboard .db-topbar-title { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .page-dashboard .db-course-row,
+  .page-dashboard .db-class-card,
+  .page-dashboard .db-assignment-card { padding:1rem !important; }
+}
+
+/* ============================================================
+   Light-mode navbar brand visibility refinement
+   ============================================================ */
+html:not(.dark-mode) .tm-navbar .tm-brand {
+  color:#0f172a !important;
+  background:linear-gradient(135deg, rgba(255,247,237,.98) 0%, rgba(248,250,252,.98) 100%) !important;
+  border:1px solid rgba(245,158,11,.24) !important;
+  border-radius:14px !important;
+  padding:.48rem .72rem !important;
+  box-shadow:0 5px 16px rgba(15,23,42,.06) !important;
+  min-height:44px;
+}
+html:not(.dark-mode) .tm-navbar .tm-brand img {
+  width:30px !important;
+  height:30px !important;
+  padding:4px;
+  border-radius:9px;
+  background:rgba(245,158,11,.10);
+  box-shadow:inset 0 0 0 1px rgba(245,158,11,.16);
+}
+html:not(.dark-mode) .tm-navbar .tm-brand span {
+  color:#172033 !important;
+  -webkit-text-fill-color:#172033 !important;
+}
+html:not(.dark-mode) .tm-navbar .tm-brand:hover {
+  opacity:1 !important;
+  background:linear-gradient(135deg, rgba(255,247,237,1) 0%, rgba(241,245,249,1) 100%) !important;
+  border-color:rgba(245,158,11,.38) !important;
+}
+@media (max-width:575.98px) {
+  html:not(.dark-mode) .tm-navbar .tm-brand {
+    padding:.42rem .58rem !important;
+    border-radius:12px !important;
+  }
+  html:not(.dark-mode) .tm-navbar .tm-brand img {
+    width:28px !important;
+    height:28px !important;
+  }
+}
+
+
+/* ============================================================
+   FINAL DASHBOARD BACK BUTTON + PHONE/RESPONSIVE SAFETY
+   ============================================================ */
+.page-dashboard .db-back-site {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:.45rem;
+  min-height:38px;
+  padding:.45rem .75rem;
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:var(--bg-card);
+  color:var(--text);
+  text-decoration:none;
+  font-size:.82rem;
+  font-weight:700;
+  line-height:1;
+  white-space:nowrap;
+  transition:all .2s ease;
+}
+.page-dashboard .db-back-site:hover,
+.page-dashboard .db-back-site:focus-visible {
+  color:var(--brand-primary);
+  border-color:rgba(37,99,235,.45);
+  background:rgba(37,99,235,.08);
+}
+.page-dashboard .db-back-site i { font-size:1rem; }
+.page-dashboard .db-topbar-actions { min-width:0; flex-wrap:nowrap; }
+.page-dashboard input[type="tel"] { min-width:0; }
+
+@media (max-width:767.98px) {
+  .page-dashboard .db-topbar { gap:.5rem; }
+  .page-dashboard .db-topbar-actions { gap:.35rem !important; }
+  .page-dashboard .db-back-site { padding:.42rem .55rem; font-size:.76rem; }
+}
+@media (max-width:575.98px) {
+  .page-dashboard .db-back-site span { display:none; }
+  .page-dashboard .db-back-site {
+    width:38px;
+    min-width:38px;
+    height:38px;
+    padding:0;
+    border-radius:9px;
+  }
+  .page-dashboard .db-topbar-actions .db-icon-btn[href="courses.html"] { display:none !important; }
+}

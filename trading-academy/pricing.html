@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pricing Plans - Trading Academy | Choose Your Learning Path</title>
+<meta content="Affordable trading education plans - from Free to Pro. Choose the plan that fits your goals and budget for stock market trading education." name="description"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet"/>
+<link href="assets/css/style.css" rel="stylesheet"/>
+<script src="assets/js/theme.js"></script>
+<link href="assets/img/logo.svg" rel="icon" type="image/svg+xml"/>
+<link href="assets/css/client-review-final.css" rel="stylesheet"/></head>
+<body class="page-pricing">
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg tm-navbar fixed-top" id="mainNavbar">
+<div class="container">
+<a class="navbar-brand tm-brand" href="index.html"><img alt="Trading Academy Logo" src="assets/img/logo.svg" style="height:28px; width:28px;"/><span>TradingAcademy</span></a>
+<button class="navbar-toggler border-0" data-bs-target="#navbarContent" data-bs-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarContent">
+<ul class="navbar-nav mx-auto gap-1">
+<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Home</a><ul class="dropdown-menu"><li><a class="dropdown-item" href="index.html">Stock Market Academy</a></li><li><a class="dropdown-item" href="home-2.html">Trading Practice Hub</a></li></ul></li>
+<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+<li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
+<li class="nav-item"><a class="nav-link active" href="pricing.html">Pricing</a></li>
+<li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li><li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+</ul>
+<div class="d-flex align-items-center gap-2 navbar-nav-buttons">
+<button class="btn" id="themeToggle"><i class="bi bi-moon-fill" id="themeIcon"></i></button>
+<button aria-label="Switch to RTL layout" class="btn rtl-toggle-control" id="rtlToggle" title="Switch to RTL layout"><span class="rtl-toggle-label">RTL</span></button>
+<a class="btn btn-sm fw-bold px-3 btn-primary" href="login.html" id="authBtn"><i class="bi bi-person me-1"></i>Login</a>
+</div>
+</div>
+</div>
+</nav>
+<!-- PAGE HERO -->
+<section class="tm-page-hero">
+<div class="container" style="position:relative;z-index:1;">
+<nav aria-label="breadcrumb" class="tm-breadcrumb mb-3"><ol class="breadcrumb justify-content-center mb-0"><li class="breadcrumb-item"><a href="index.html">Home</a></li><li class="breadcrumb-item active">Pricing</li></ol></nav>
+<h1 class="mb-3">Simple, Transparent Pricing</h1>
+<p class="mb-0">Choose the plan that fits your learning goals. No hidden fees. Cancel anytime.</p>
+</div>
+</section>
+<!-- BILLING TOGGLE -->
+<section class="py-4" style="background:var(--bg-alt);">
+<div class="container text-center">
+<div class="d-inline-flex align-items-center gap-3 p-2 rounded-3" style="background:var(--bg-card);border:1px solid var(--border);">
+<span class="fw-bold" id="monthlyLabel" style="font-size:.9rem;color:var(--primary);">Monthly</span>
+<div class="form-check form-switch mb-0">
+<input class="form-check-input" id="billingToggle" role="switch" style="width:3rem;height:1.5rem;cursor:pointer;" type="checkbox"/>
+<label class="form-check-label" for="billingToggle"></label>
+</div>
+<span id="annualLabel" style="font-size:.9rem;color:var(--text-muted);">Annual <span class="badge bg-success ms-1" style="font-size:.7rem;">Save 30%</span></span>
+</div>
+</div>
+</section>
+<!-- PRICING CARDS -->
+<section class="tm-section">
+<div class="container">
+<div class="row g-4 align-items-stretch" id="pricingGrid"><!-- Injected by JS --></div>
+</div>
+</section>
+<!-- COMPARISON TABLE -->
+<section class="tm-section" style="background:var(--bg-alt);">
+<div class="container">
+<div class="tm-section-head" data-aos=""><div class="tm-section-badge">Plan Comparison</div><h2>Feature-by-Feature Comparison</h2></div>
+<div class="table-responsive">
+<table class="table" style="background:var(--bg-card);border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);">
+<thead>
+<tr style="background:var(--bg-alt);">
+<th style="padding:1rem 1.25rem;color:var(--text);border-color:var(--border);font-weight:700;">Feature</th>
+<th class="text-center" style="padding:1rem 1.25rem;color:var(--text);border-color:var(--border);font-weight:700;">Free</th>
+<th class="text-center" style="padding:1rem 1.25rem;color:var(--primary);border-color:var(--border);font-weight:700;">Starter</th>
+<th class="text-center" style="padding:1rem 1.25rem;color:var(--secondary);border-color:var(--border);font-weight:700;">Pro *</th>
+<th class="text-center" style="padding:1rem 1.25rem;color:var(--text);border-color:var(--border);font-weight:700;">Elite</th>
+</tr>
+</thead>
+<tbody id="comparisonTable"></tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- FAQ -->
+<section class="tm-section">
+<div class="container">
+<div class="row justify-content-center">
+<div class="col-lg-8">
+<div class="tm-section-head" data-aos=""><div class="tm-section-badge">FAQs</div><h2>Pricing Questions Answered</h2></div>
+<div class="accordion pricing-faq" id="pricingFAQ">
+<div class="accordion-item" style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius)!important;margin-bottom:.75rem;">
+<h2 class="accordion-header"><button class="accordion-button fw-semibold" data-bs-target="#faq1" data-bs-toggle="collapse" style="background:var(--bg-card);color:var(--text);border-radius:var(--radius)!important;" type="button">Can I switch plans anytime?</button></h2>
+<div class="accordion-collapse collapse show" data-bs-parent="#pricingFAQ" id="faq1"><div class="accordion-body" style="color:var(--text-light);font-size:.9rem;">Yes, you can upgrade or downgrade your plan at any time. Upgrades take effect immediately; downgrades take effect at the start of your next billing cycle.</div></div>
+</div>
+<div class="accordion-item" style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius)!important;margin-bottom:.75rem;">
+<h2 class="accordion-header"><button class="accordion-button collapsed fw-semibold" data-bs-target="#faq2" data-bs-toggle="collapse" style="background:var(--bg-card);color:var(--text);" type="button">Is there a refund policy?</button></h2>
+<div class="accordion-collapse collapse" data-bs-parent="#pricingFAQ" id="faq2"><div class="accordion-body" style="color:var(--text-light);font-size:.9rem;">We offer a 7-day money-back guarantee on all paid plans. If you're not satisfied within 7 days of purchase, contact us for a full refund - no questions asked.</div></div>
+</div>
+<div class="accordion-item" style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius)!important;margin-bottom:.75rem;">
+<h2 class="accordion-header"><button class="accordion-button collapsed fw-semibold" data-bs-target="#faq3" data-bs-toggle="collapse" style="background:var(--bg-card);color:var(--text);" type="button">Do the courses have an expiry date?</button></h2>
+<div class="accordion-collapse collapse" data-bs-parent="#pricingFAQ" id="faq3"><div class="accordion-body" style="color:var(--text-light);font-size:.9rem;">No. Once you enroll in a course, you have lifetime access to all the course content, including future updates made to that course.</div></div>
+</div>
+<div class="accordion-item" style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius)!important;">
+<h2 class="accordion-header"><button class="accordion-button collapsed fw-semibold" data-bs-target="#faq4" data-bs-toggle="collapse" style="background:var(--bg-card);color:var(--text);" type="button">Is GST included in the prices?</button></h2>
+<div class="accordion-collapse collapse" data-bs-parent="#pricingFAQ" id="faq4"><div class="accordion-body" style="color:var(--text-light);font-size:.9rem;">All prices shown are exclusive of GST (18%). GST will be added during checkout. We provide GST-compliant invoices for all purchases.</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA -->
+<section class="tm-cta">
+<div class="container" style="position:relative;z-index:1;text-align:center;">
+<h2>Still Unsure? <span class="text-warning">Start Free Today</span></h2>
+<p>Our Free plan gives you immediate access to introductory content and free resources - no credit card required.</p>
+<div class="d-flex flex-wrap justify-content-center gap-3">
+<a class="btn btn-cta btn-lg" href="register.html"><i class="bi bi-person-plus me-2"></i>Get Started Free</a>
+<a class="btn btn-cta-outline btn-lg" href="contact.html"><i class="bi bi-chat me-2"></i>Talk to Advisor</a>
+</div>
+</div>
+</section>
+<!-- ====""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+     FOOTER
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""==== -->
+<footer class="tm-footer">
+<div class="container">
+<div class="row g-4">
+<div class="col-lg-4">
+<a class="footer-brand text-decoration-none" href="index.html">
+<img alt="Trading Academy Logo" src="assets/img/logo.svg" style="height:24px;width:24px;margin-right:8px;"/>TradingAcademy
+        </a>
+<p>India's premier stock market trading education platform. Learn from SEBI-registered advisors and build real trading skills.</p>
+<div class="tm-footer-social">
+<a aria-label="Facebook" href="https://facebook.com" rel="noopener" target="_blank"><i class="bi bi-facebook"></i></a>
+<a aria-label="Twitter" href="https://twitter.com" rel="noopener" target="_blank"><i class="bi bi-twitter-x"></i></a>
+<a aria-label="YouTube" href="https://youtube.com" rel="noopener" target="_blank"><i class="bi bi-youtube"></i></a>
+<a aria-label="LinkedIn" href="https://linkedin.com" rel="noopener" target="_blank"><i class="bi bi-linkedin"></i></a>
+<a aria-label="Instagram" href="https://instagram.com" rel="noopener" target="_blank"><i class="bi bi-instagram"></i></a>
+</div>
+<div class="mt-4">
+<h6 class="mb-2 text-white fw-bold" style="font-size:0.75rem;letter-spacing:0.05em;text-transform:uppercase;">Get Free Trading Tips</h6>
+<form class="d-flex w-100" id="newsletterForm" style="max-width:320px;">
+<div class="input-group" style="border-radius:8px; overflow:hidden; border:1px solid rgba(255,255,255,0.15); background:rgba(255,255,255,0.05); align-items:stretch; height:44px;">
+<span class="input-group-text border-0" style="background:transparent; color:rgba(255,255,255,0.6); padding:0 0.75rem 0 1rem; display:flex; align-items:center;">
+<i class="bi bi-envelope"></i>
+</span>
+<input class="form-control border-0 shadow-none" pattern="[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+[.][A-Za-z]{2,}" placeholder="Your email address" required="" style="background:transparent; color:#fff; font-size:0.9rem; padding:0 0.5rem 0 0; display:flex; align-items:center;" title="Enter a valid email address such as name@example.com" type="email"/>
+<button class="btn btn-primary border-0 m-0" style="border-radius:0; padding:0 1.25rem; display:flex; align-items:center; justify-content:center;" type="submit">
+<i class="bi bi-send"></i>
+</button>
+</div>
+</form>
+</div>
+</div>
+<div class="col-6 col-lg-2">
+<h6>Quick Links</h6>
+<ul>
+<li><a href="index.html"><i class="bi bi-chevron-right"></i>Home</a></li>
+<li><a href="about.html"><i class="bi bi-chevron-right"></i>About Us</a></li>
+<li><a href="courses.html"><i class="bi bi-chevron-right"></i>Courses</a></li>
+<li><a href="mentors.html"><i class="bi bi-chevron-right"></i>Mentors</a></li>
+<li><a href="pricing.html"><i class="bi bi-chevron-right"></i>Pricing</a></li>
+<li><a href="contact.html"><i class="bi bi-chevron-right"></i>Contact</a></li>
+</ul>
+</div>
+<div class="col-6 col-lg-2">
+<h6>Courses</h6>
+<ul>
+<li><a href="courses.html?level=Beginner"><i class="bi bi-chevron-right"></i>Beginner</a></li>
+<li><a href="courses.html?level=Intermediate"><i class="bi bi-chevron-right"></i>Intermediate</a></li>
+<li><a href="courses.html?level=Advanced"><i class="bi bi-chevron-right"></i>Advanced</a></li>
+<li><a href="free-resources.html"><i class="bi bi-chevron-right"></i>Free Resources</a></li>
+<li><a href="blog.html"><i class="bi bi-chevron-right"></i>Blog</a></li>
+</ul>
+</div>
+<div class="col-lg-4">
+<h6>Contact Us</h6>
+<ul>
+<li style="display:flex;gap:.5rem;margin-bottom:.5rem;font-size:.875rem;color:#94a3b8;"><i class="bi bi-geo-alt-fill" style="color:#f59e0b;margin-top:3px;flex-shrink:0;"></i>123 Financial District, Bandra Kurla Complex, Mumbai - 400051</li>
+<li><a href="mailto:info@tradingacademy.in"><i class="bi bi-envelope me-2" style="color:#f59e0b;"></i>info@tradingacademy.in</a></li>
+<li><a href="tel:+918001234567"><i class="bi bi-telephone me-2" style="color:#f59e0b;"></i>+91 800 123 4567</a></li>
+<li><a href="contact.html"><i class="bi bi-clock me-2" style="color:#f59e0b;"></i>Mon-Sat: 9 AM - 7 PM IST</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="tm-footer-bottom">
+<div class="container">
+<div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+<p class="mb-0">(c) 2024 Trading Academy. All rights reserved.</p>
+<div class="d-flex gap-3">
+<a href="privacy-policy.html" style="color:#64748b;font-size:.8rem;text-decoration:none;">Privacy Policy</a>
+<a href="terms-of-service.html" style="color:#64748b;font-size:.8rem;text-decoration:none;">Terms of Service</a>
+<a href="refund-policy.html" style="color:#64748b;font-size:.8rem;text-decoration:none;">Refund Policy</a>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/auth.js"></script>
+<script>
+let isAnnual = false;
+
+function renderPricing() {
+  const grid = document.getElementById('pricingGrid');
+  grid.innerHTML = ACADEMY.pricing.map(p => {
+    const price = isAnnual ? p.priceAnnual : p.priceMonthly;
+    const period = isAnnual ? '/yr' : '/mo';
+    return `
+    <div class="col-md-6 col-xl-3 d-flex" data-aos>
+      <div class="tm-pricing-card ${p.featured ? 'featured' : ''} h-100 w-100">
+        ${p.badge ? `<span class="tm-pricing-badge bg-${p.featured?'warning':'primary'} text-white">${p.badge}</span>` : ''}
+        <h5 class="mb-1">${p.name}</h5>
+        <p class="tm-pricing-tagline" style="font-size:.85rem;color:var(--text-muted);margin-bottom:0;">${p.tagline}</p>
+        <div class="tm-pricing-price">
+          ${price === 0 ? '<span class="tm-pricing-free">Free</span>' : `<span class="tm-price-currency">₹</span><span class="tm-price-number">${price.toLocaleString('en-IN')}</span><span class="tm-price-period">${period}</span>`}
+        </div>
+        <ul class="tm-pricing-features">
+          ${p.features.map(f => `<li class="${f.included?'':'not-included'}"><i class="bi ${f.included?'bi-check-circle-fill text-success':'bi-x-circle-fill text-muted'}"></i>${f.text}</li>`).join('')}
+        </ul>
+        <a href="${price === 0 ? 'register.html' : 'register.html'}" class="btn ${p.featured ? 'btn-secondary' : 'btn-outline-primary'} w-100 fw-bold mt-auto tm-pricing-action">
+          ${price === 0 ? 'Get Started Free' : 'Get ' + p.name}
+        </a>
+        ${isAnnual && price > 0 ? `<p class="text-center mt-2 mb-0" style="font-size:.75rem;color:var(--success);">Save ${(p.priceMonthly*12 - p.priceAnnual).toLocaleString('en-IN')}/year</p>` : ''}
+      </div>
+    </div>`;
+  }).join('');
+  document.querySelectorAll('[data-aos]').forEach(el => el.classList.add('aos-animate'));
+}
+
+function renderComparison() {
+  const features = [
+    { name: 'Introductory Videos', vals: [true, true, true, true] },
+    { name: 'Free Resources (PDF/Excel)', vals: [true, true, true, true] },
+    { name: 'Number of Courses', vals: ['1', '3', '8', '8'] },
+    { name: 'Live Weekly Classes', vals: [false, true, true, true] },
+    { name: 'Recorded Lessons Library', vals: [false, false, true, true] },
+    { name: 'Mock Portfolio Practice', vals: [false, false, true, true] },
+    { name: 'Assignments & Quizzes', vals: [false, false, true, true] },
+    { name: 'Course Completion Certificate', vals: [false, false, true, true] },
+    { name: '1:1 Mentor Sessions', vals: [false, false, false, true] },
+    { name: 'Priority Support', vals: [false, false, false, true] },
+    { name: 'Exclusive Trading Webinars', vals: [false, false, false, true] },
+  ];
+
+  document.getElementById('comparisonTable').innerHTML = features.map(f => `
+    <tr>
+      <td style="padding:.875rem 1.25rem;color:var(--text);border-color:var(--border);font-size:.9rem;font-weight:500;">${f.name}</td>
+      ${f.vals.map(v => `<td class="text-center" style="padding:.875rem;border-color:var(--border);">
+        ${v === true  ? '<i class="bi bi-check-circle-fill text-success" style="font-size:1rem;"></i>' :
+          v === false ? '<i class="bi bi-x-circle-fill text-muted" style="font-size:1rem;opacity:.3;"></i>' :
+          `<span style="font-size:.875rem;font-weight:600;color:var(--text);">${v}</span>`}
+      </td>`).join('')}
+    </tr>`).join('');
+}
+
+document.getElementById('billingToggle').addEventListener('change', function() {
+  isAnnual = this.checked;
+  document.getElementById('monthlyLabel').style.color = isAnnual ? 'var(--text-muted)' : 'var(--primary)';
+  document.getElementById('annualLabel').style.color  = isAnnual ? 'var(--primary)'    : 'var(--text-muted)';
+  document.getElementById('monthlyLabel').style.fontWeight = isAnnual ? '400' : '700';
+  document.getElementById('annualLabel').style.fontWeight  = isAnnual ? '700' : '400';
+  renderPricing();
+});
+
+renderPricing();
+renderComparison();
+</script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

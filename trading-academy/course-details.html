@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title id="pageTitle">Course Details - Trading Academy</title>
+<meta content="Detailed course information - Trading Academy India." id="pageDesc" name="description"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet"/>
+<link href="assets/css/style.css" rel="stylesheet"/>
+<script src="assets/js/theme.js"></script>
+<link href="assets/img/logo.svg" rel="icon" type="image/svg+xml"/>
+<link href="assets/css/client-review-final.css" rel="stylesheet"/></head>
+<body class="page-course-details">
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg tm-navbar fixed-top" id="mainNavbar">
+<div class="container">
+<a class="navbar-brand tm-brand" href="index.html"><img alt="Trading Academy Logo" src="assets/img/logo.svg" style="height:28px; width:28px;"/><span>TradingAcademy</span></a>
+<button class="navbar-toggler border-0" data-bs-target="#navbarContent" data-bs-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarContent">
+<ul class="navbar-nav mx-auto gap-1">
+<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Home</a><ul class="dropdown-menu"><li><a class="dropdown-item" href="index.html">Stock Market Academy</a></li><li><a class="dropdown-item" href="home-2.html">Trading Practice Hub</a></li></ul></li>
+<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+<li class="nav-item"><a class="nav-link active" href="courses.html">Courses</a></li>
+<li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
+<li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li><li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+</ul>
+<div class="d-flex align-items-center gap-2 navbar-nav-buttons">
+<button class="btn" id="themeToggle"><i class="bi bi-moon-fill" id="themeIcon"></i></button>
+<button aria-label="Switch to RTL layout" class="btn rtl-toggle-control" id="rtlToggle" title="Switch to RTL layout"><span class="rtl-toggle-label">RTL</span></button>
+<a class="btn btn-sm fw-bold px-3 btn-primary" href="login.html" id="authBtn"><i class="bi bi-person me-1"></i>Login</a>
+</div>
+</div>
+</div>
+</nav>
+<!-- HERO (dynamically filled) -->
+<section class="course-detail-hero" id="courseHero">
+<div class="container" style="position:relative;z-index:1;">
+<nav aria-label="breadcrumb" class="tm-breadcrumb mb-3">
+<ol class="breadcrumb mb-0">
+<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+<li class="breadcrumb-item"><a href="courses.html">Courses</a></li>
+<li class="breadcrumb-item active" id="breadcrumbTitle">Course</li>
+</ol>
+</nav>
+<div class="row align-items-center g-4">
+<div class="col-lg-8">
+<span class="badge mb-3" id="courseLevelBadge" style="font-size:.85rem;padding:.4rem .9rem;"></span>
+<h1 class="mb-3" id="courseTitle"></h1>
+<p class="mb-3" id="courseDesc" style="font-size:1.05rem;color:#94a3b8;"></p>
+<div class="d-flex flex-wrap gap-4 mb-3" id="courseMeta" style="font-size:.9rem;color:#94a3b8;"></div>
+<div class="d-flex flex-wrap gap-3">
+<div class="d-flex align-items-center gap-2">
+<img alt="" id="instrImg" src="" style="width:36px;height:36px;border-radius:50%;object-fit:cover;"/>
+<span style="color:#e2e8f0;font-size:.9rem;">by <strong id="instrName"></strong></span>
+</div>
+<span id="courseStudents" style="color:#94a3b8;font-size:.875rem;"></span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- MAIN CONTENT -->
+<section class="tm-section">
+<div class="container">
+<div class="text-center py-5 d-none" id="notFound">
+<i class="bi bi-exclamation-circle" style="font-size:3rem;color:var(--text-muted);"></i>
+<h3 class="mt-3">Course Not Found</h3>
+<p class="text-muted">The course you're looking for doesn't exist.</p>
+<a class="btn btn-primary" href="courses.html">Browse All Courses</a>
+</div>
+<div class="row g-4" id="courseContent">
+<div class="col-lg-8">
+<!-- Course Image (same as card) -->
+<img alt="" class="img-fluid rounded-3 mb-4 shadow-sm w-100" id="courseImage" loading="lazy" src="" style="max-height:380px;object-fit:cover;"/>
+<!-- What you'll learn -->
+<div class="bg-card border rounded-3 p-4 mb-4" style="background:var(--bg-alt);border-color:var(--border)!important;">
+<h4 class="mb-3"><i class="bi bi-check2-circle me-2" style="color:var(--success);"></i>What You'll Learn</h4>
+<div class="row g-2" id="whatYouLearn"></div>
+</div>
+<!-- Long Description -->
+<h4 class="mb-3">About This Course</h4>
+<p class="mb-4" id="courseLongDesc" style="color:var(--text-light);line-height:1.8;"></p>
+<!-- Curriculum -->
+<h4 class="mb-3">Course Curriculum</h4>
+<div id="curriculum"></div>
+<!-- Requirements -->
+<h4 class="mb-3 mt-4">Requirements</h4>
+<ul id="requirements" style="color:var(--text-light);"></ul>
+<!-- Instructor -->
+<div class="bg-card border rounded-3 p-4 mt-4" style="border-color:var(--border)!important;">
+<h4 class="mb-3">Your Instructor</h4>
+<div class="d-flex gap-3 align-items-start">
+<img alt="" id="instrImgLarge" src="" style="width:72px;height:72px;border-radius:50%;object-fit:cover;flex-shrink:0;"/>
+<div>
+<h5 class="mb-1" id="instrNameLarge"></h5>
+<p class="text-muted mb-2" id="instrBio" style="font-size:.875rem;"></p>
+</div>
+</div>
+</div>
+</div>
+<!-- Sidebar -->
+<div class="col-lg-4">
+<div class="course-sidebar">
+<img alt="" class="course-sidebar-img w-100" id="sidebarImage" src=""/>
+<div class="course-sidebar-body">
+<div class="mb-3">
+<span class="tm-price-current" id="sidebarPrice" style="font-size:2rem;"></span>
+<span class="tm-price-original" id="sidebarOriginalPrice"></span>
+<span class="badge bg-success ms-2" id="discountBadge"></span>
+</div>
+<button class="btn btn-primary w-100 mb-2 py-2 fw-bold" id="enrollBtn" onclick="handleEnroll()">
+<i class="bi bi-bookmark-plus me-2"></i>Enroll Now
+            </button>
+<a class="btn btn-outline-primary w-100 mb-3" href="courses.html">
+<i class="bi bi-arrow-left me-2"></i>Back to Courses
+            </a>
+<hr style="border-color:var(--border);"/>
+<h6 class="mb-3 fw-bold">Course Includes</h6>
+<ul style="list-style:none;padding:0;font-size:.875rem;">
+<li class="course-curriculum-item"><span><i class="bi bi-play-circle me-2" style="color:var(--primary);"></i>Video Lessons</span><strong id="siLessons"></strong></li>
+<li class="course-curriculum-item"><span><i class="bi bi-clock me-2" style="color:var(--primary);"></i>Duration</span><strong id="siDuration"></strong></li>
+<li class="course-curriculum-item"><span><i class="bi bi-translate me-2" style="color:var(--primary);"></i>Language</span><strong id="siLang"></strong></li>
+<li class="course-curriculum-item"><span><i class="bi bi-award me-2" style="color:var(--primary);"></i>Certificate</span><strong>Included</strong></li>
+<li class="course-curriculum-item"><span><i class="bi bi-infinity me-2" style="color:var(--primary);"></i>Access</span><strong>Lifetime</strong></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Related Courses -->
+<section class="tm-section" style="background:var(--bg-alt);">
+<div class="container">
+<h3 class="mb-4">You Might Also Like</h3>
+<div class="row g-4" id="relatedCourses"></div>
+</div>
+</section>
+<!-- ====""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+     FOOTER
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""==== -->
+<footer class="tm-footer">
+<div class="container">
+<div class="row g-4">
+<div class="col-lg-4">
+<a class="footer-brand text-decoration-none" href="index.html">
+<img alt="Trading Academy Logo" src="assets/img/logo.svg" style="height:24px;width:24px;margin-right:8px;"/>TradingAcademy
+        </a>
+<p>India's premier stock market trading education platform. Learn from SEBI-registered advisors and build real trading skills.</p>
+<div class="tm-footer-social">
+<a aria-label="Facebook" href="https://facebook.com" rel="noopener" target="_blank"><i class="bi bi-facebook"></i></a>
+<a aria-label="Twitter" href="https://twitter.com" rel="noopener" target="_blank"><i class="bi bi-twitter-x"></i></a>
+<a aria-label="YouTube" href="https://youtube.com" rel="noopener" target="_blank"><i class="bi bi-youtube"></i></a>
+<a aria-label="LinkedIn" href="https://linkedin.com" rel="noopener" target="_blank"><i class="bi bi-linkedin"></i></a>
+<a aria-label="Instagram" href="https://instagram.com" rel="noopener" target="_blank"><i class="bi bi-instagram"></i></a>
+</div>
+<div class="mt-4">
+<h6 class="mb-2 text-white fw-bold" style="font-size:0.75rem;letter-spacing:0.05em;text-transform:uppercase;">Get Free Trading Tips</h6>
+<form class="d-flex w-100" id="newsletterForm" style="max-width:320px;">
+<div class="input-group" style="border-radius:8px; overflow:hidden; border:1px solid rgba(255,255,255,0.15); background:rgba(255,255,255,0.05); align-items:stretch; height:44px;">
+<span class="input-group-text border-0" style="background:transparent; color:rgba(255,255,255,0.6); padding:0 0.75rem 0 1rem; display:flex; align-items:center;">
+<i class="bi bi-envelope"></i>
+</span>
+<input class="form-control border-0 shadow-none" pattern="[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+[.][A-Za-z]{2,}" placeholder="Your email address" required="" style="background:transparent; color:#fff; font-size:0.9rem; padding:0 0.5rem 0 0; display:flex; align-items:center;" title="Enter a valid email address such as name@example.com" type="email"/>
+<button class="btn btn-primary border-0 m-0" style="border-radius:0; padding:0 1.25rem; display:flex; align-items:center; justify-content:center;" type="submit">
+<i class="bi bi-send"></i>
+</button>
+</div>
+</form>
+</div>
+</div>
+<div class="col-6 col-lg-2">
+<h6>Quick Links</h6>
+<ul>
+<li><a href="index.html"><i class="bi bi-chevron-right"></i>Home</a></li>
+<li><a href="about.html"><i class="bi bi-chevron-right"></i>About Us</a></li>
+<li><a href="courses.html"><i class="bi bi-chevron-right"></i>Courses</a></li>
+<li><a href="mentors.html"><i class="bi bi-chevron-right"></i>Mentors</a></li>
+<li><a href="pricing.html"><i class="bi bi-chevron-right"></i>Pricing</a></li>
+<li><a href="contact.html"><i class="bi bi-chevron-right"></i>Contact</a></li>
+</ul>
+</div>
+<div class="col-6 col-lg-2">
+<h6>Courses</h6>
+<ul>
+<li><a href="courses.html?level=Beginner"><i class="bi bi-chevron-right"></i>Beginner</a></li>
+<li><a href="courses.html?level=Intermediate"><i class="bi bi-chevron-right"></i>Intermediate</a></li>
+<li><a href="courses.html?level=Advanced"><i class="bi bi-chevron-right"></i>Advanced</a></li>
+<li><a href="free-resources.html"><i class="bi bi-chevron-right"></i>Free Resources</a></li>
+<li><a href="blog.html"><i class="bi bi-chevron-right"></i>Blog</a></li>
+</ul>
+</div>
+<div class="col-lg-4">
+<h6>Contact Us</h6>
+<ul>
+<li style="display:flex;gap:.5rem;margin-bottom:.5rem;font-size:.875rem;color:#94a3b8;"><i class="bi bi-geo-alt-fill" style="color:#f59e0b;margin-top:3px;flex-shrink:0;"></i>123 Financial District, Bandra Kurla Complex, Mumbai - 400051</li>
+<li><a href="mailto:info@tradingacademy.in"><i class="bi bi-envelope me-2" style="color:#f59e0b;"></i>info@tradingacademy.in</a></li>
+<li><a href="tel:+918001234567"><i class="bi bi-telephone me-2" style="color:#f59e0b;"></i>+91 800 123 4567</a></li>
+<li><a href="contact.html"><i class="bi bi-clock me-2" style="color:#f59e0b;"></i>Mon-Sat: 9 AM - 7 PM IST</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="tm-footer-bottom">
+<div class="container">
+<div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+<p class="mb-0">(c) 2024 Trading Academy. All rights reserved.</p>
+<div class="d-flex gap-3">
+<a href="privacy-policy.html" style="color:#64748b;font-size:.8rem;text-decoration:none;">Privacy Policy</a>
+<a href="terms-of-service.html" style="color:#64748b;font-size:.8rem;text-decoration:none;">Terms of Service</a>
+<a href="refund-policy.html" style="color:#64748b;font-size:.8rem;text-decoration:none;">Refund Policy</a>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/auth.js"></script>
+<script>
+const courseId = parseInt(new URLSearchParams(window.location.search).get('id'));
+const course   = ACADEMY.courses.find(c => c.id === courseId);
+
+if (!course) {
+  document.getElementById('notFound').classList.remove('d-none');
+  document.getElementById('courseContent').classList.add('d-none');
+} else {
+  // Meta tags
+  document.getElementById('pageTitle').textContent = course.title + ' - Trading Academy';
+  document.getElementById('pageDesc').content = course.shortDesc;
+
+  // Hero
+  document.getElementById('breadcrumbTitle').textContent = course.title;
+  document.getElementById('courseTitle').textContent = course.title;
+  document.getElementById('courseDesc').textContent = course.shortDesc;
+  const levelBadge = document.getElementById('courseLevelBadge');
+  levelBadge.textContent = course.level;
+  levelBadge.className = 'badge mb-3 badge-' + course.level.toLowerCase();
+  levelBadge.style.cssText = 'font-size:.85rem;padding:.4rem .9rem;';
+
+  document.getElementById('courseMeta').innerHTML = `
+    <span><i class="bi bi-clock me-1"></i>${course.duration}</span>
+    <span><i class="bi bi-play-circle me-1"></i>${course.lessons} Lessons</span>
+    <span><i class="bi bi-people me-1"></i>${course.students.toLocaleString('en-IN')} Students</span>
+    <span><i class="bi bi-star-fill me-1" style="color:#f59e0b;"></i>${course.rating} (${course.reviews} reviews)</span>
+    <span><i class="bi bi-translate me-1"></i>${course.language}</span>`;
+
+  // Instructor
+  const mentor = ACADEMY.mentors.find(m => m.id === course.instructorId);
+  const instrImg = mentor ? mentor.image : 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=80&h=80&fit=crop&q=80';
+  document.getElementById('instrImg').src = instrImg;
+  document.getElementById('instrImg').alt = course.instructor;
+  document.getElementById('instrName').textContent = course.instructor;
+  document.getElementById('instrImgLarge').src = instrImg;
+  document.getElementById('instrImgLarge').alt = course.instructor;
+  document.getElementById('instrNameLarge').textContent = course.instructor;
+  document.getElementById('instrBio').textContent = course.instructorBio;
+  document.getElementById('courseStudents').textContent = course.students.toLocaleString('en-IN') + '+ students enrolled';
+
+  // CRITICAL: Use the SAME image as the card
+  document.getElementById('courseImage').src  = course.image;
+  document.getElementById('courseImage').alt  = course.title;
+  document.getElementById('sidebarImage').src = course.image;
+  document.getElementById('sidebarImage').alt = course.title;
+
+  // Sidebar
+  const discount = Math.round((1 - course.price / course.originalPrice) * 100);
+  document.getElementById('sidebarPrice').textContent = 'Rs. ' + course.price.toLocaleString('en-IN');
+  document.getElementById('sidebarOriginalPrice').textContent = 'Rs. ' + course.originalPrice.toLocaleString('en-IN');
+  document.getElementById('discountBadge').textContent = discount + '% off';
+  document.getElementById('siLessons').textContent  = course.lessons;
+  document.getElementById('siDuration').textContent = course.duration;
+  document.getElementById('siLang').textContent     = course.language;
+
+  // What you'll learn
+  document.getElementById('whatYouLearn').innerHTML = course.whatYouLearn.map(item =>
+    `<div class="col-sm-6"><div style="display:flex;align-items:flex-start;gap:.5rem;font-size:.875rem;"><i class="bi bi-check2 mt-1" style="color:var(--success);flex-shrink:0;"></i><span style="color:var(--text-light);">${item}</span></div></div>`
+  ).join('');
+
+  // Long description
+  document.getElementById('courseLongDesc').textContent = course.longDesc;
+
+  // Curriculum
+  document.getElementById('curriculum').innerHTML = course.curriculum.map((mod, mi) => `
+    <div class="curriculum-section">
+      <div class="curriculum-section-header" onclick="this.nextElementSibling.classList.toggle('d-none')">
+        <span><i class="bi bi-collection me-2" style="color:var(--secondary);"></i>${mod.section}</span>
+        <span style="font-size:.8rem;color:var(--text-muted);">${mod.lessons.length} lessons <i class="bi bi-chevron-down ms-1"></i></span>
+      </div>
+      <div class="curriculum-section-body ${mi > 0 ? 'd-none' : ''}">
+        ${mod.lessons.map(l => `
+          <div class="course-curriculum-item">
+            <span><i class="bi bi-play-circle me-2" style="color:var(--primary);"></i>${l}</span>
+            <span style="font-size:.75rem;color:var(--text-muted);">Video</span>
+          </div>`).join('')}
+      </div>
+    </div>`).join('');
+
+  // Requirements
+  document.getElementById('requirements').innerHTML = course.requirements.map(r =>
+    `<li style="color:var(--text-light);margin-bottom:.4rem;"><i class="bi bi-dot me-1" style="font-size:1.2rem;"></i>${r}</li>`).join('');
+
+  // Related courses (same level, different id)
+  const related = ACADEMY.courses.filter(c => c.id !== courseId && c.level === course.level).slice(0, 3);
+  document.getElementById('relatedCourses').innerHTML = related.map(c => `
+    <div class="col-md-4" data-aos>
+      <div class="tm-course-card">
+        <div class="tm-course-card-img-wrap">
+          <img src="${c.thumbImage}" alt="${c.title}" class="tm-course-card-img" loading="lazy" width="450" height="280"/>
+          <span class="tm-level-badge badge-${c.level.toLowerCase()}">${c.level}</span>
+        </div>
+        <div class="tm-course-card-body">
+          <h5>${c.title}</h5>
+          <p>${c.shortDesc}</p>
+          <div class="tm-course-price">
+            <span class="tm-price-current">Rs. ${c.price.toLocaleString('en-IN')}</span>
+            <a href="course-details.html?id=${c.id}" class="btn btn-primary btn-sm">View</a>
+          </div>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+function handleEnroll() {
+  if (!AUTH.isLoggedIn()) {
+    showToast('Please log in to enroll in this course.', 'warning');
+    setTimeout(() => window.location.href = 'login.html', 1500);
+    return;
+  }
+  let enrollments = JSON.parse(localStorage.getItem('tm-enrollments') || '[]');
+  if (!enrollments.find(e => e.courseId === courseId)) {
+    enrollments.push({ courseId, enrollDate: new Date().toISOString().split('T')[0], progress: 0 });
+    localStorage.setItem('tm-enrollments', JSON.stringify(enrollments));
+    showToast('Successfully enrolled! Head to your dashboard to start learning.', 'success');
+    document.getElementById('enrollBtn').innerHTML = '<i class="bi bi-check-circle me-2"></i>Enrolled!';
+    document.getElementById('enrollBtn').disabled = true;
+    document.getElementById('enrollBtn').className = 'btn btn-success w-100 mb-2 py-2 fw-bold';
+  } else {
+    showToast('You are already enrolled. Go to your dashboard to continue.', 'info');
+  }
+}
+
+function showToast(msg, type) {
+  let c = document.getElementById('tc');
+  if (!c) { c = document.createElement('div'); c.id='tc'; c.className='toast-container position-fixed bottom-0 end-0 p-3'; c.style.zIndex=9999; document.body.appendChild(c); }
+  const m = {success:'bg-success',danger:'bg-danger',warning:'bg-warning text-dark',info:'bg-primary'};
+  const t = document.createElement('div');
+  t.className='toast align-items-center text-white border-0 '+(m[type]||m.info);
+  t.setAttribute('role','alert');
+  t.innerHTML=`<div class="d-flex"><div class="toast-body fw-semibold">${msg}</div><button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button></div>`;
+  c.appendChild(t);
+  new bootstrap.Toast(t,{delay:4000}).show();
+  t.addEventListener('hidden.bs.toast',()=>t.remove());
+}
+</script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

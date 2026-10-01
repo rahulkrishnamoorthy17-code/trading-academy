@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Free Resources - Trading Academy | Download Free Trading Materials</title>
+<meta content="Download free stock market trading resources - PDF cheatsheets, Excel tools, and educational videos from Trading Academy's expert mentors." name="description"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet"/>
+<link href="assets/css/style.css" rel="stylesheet"/>
+<script src="assets/js/theme.js"></script>
+<link href="assets/img/logo.svg" rel="icon" type="image/svg+xml"/>
+<link href="assets/css/client-review-final.css" rel="stylesheet"/></head>
+<body class="page-free-resources">
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg tm-navbar fixed-top" id="mainNavbar">
+<div class="container">
+<a class="navbar-brand tm-brand" href="index.html"><img alt="Trading Academy Logo" src="assets/img/logo.svg" style="height:28px; width:28px;"/><span>TradingAcademy</span></a>
+<button class="navbar-toggler border-0" data-bs-target="#navbarContent" data-bs-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarContent">
+<ul class="navbar-nav mx-auto gap-1">
+<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Home</a><ul class="dropdown-menu"><li><a class="dropdown-item" href="index.html">Stock Market Academy</a></li><li><a class="dropdown-item" href="home-2.html">Trading Practice Hub</a></li></ul></li>
+<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+<li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
+<li class="nav-item"><a class="nav-link active" href="free-resources.html">Free Resources</a></li>
+<li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
+<li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li><li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+</ul>
+<div class="d-flex align-items-center gap-2 navbar-nav-buttons">
+<button class="btn" id="themeToggle"><i class="bi bi-moon-fill" id="themeIcon"></i></button>
+<button aria-label="Switch to RTL layout" class="btn rtl-toggle-control" id="rtlToggle" title="Switch to RTL layout"><span class="rtl-toggle-label">RTL</span></button>
+<a class="btn btn-sm fw-bold px-3 btn-primary" href="login.html" id="authBtn"><i class="bi bi-person me-1"></i>Login</a>
+</div>
+</div>
+</div>
+</nav>
+<!-- PAGE HERO -->
+<section class="tm-page-hero">
+<div class="container" style="position:relative;z-index:1;">
+<nav aria-label="breadcrumb" class="tm-breadcrumb mb-3"><ol class="breadcrumb justify-content-center mb-0"><li class="breadcrumb-item"><a href="index.html">Home</a></li><li class="breadcrumb-item active">Free Resources</li></ol></nav>
+<h1 class="mb-3">Free Trading Resources</h1>
+<p class="mb-0">Download expert-created PDF cheatsheets, Excel tools, and watch free educational videos - 100% free, no credit card required</p>
+</div>
+</section>
+<!-- STATS ROW -->
+<section class="py-4" style="background:var(--bg-alt);">
+<div class="container">
+<div class="row g-3 text-center">
+<div class="col-4"><span style="font-family:'Outfit',sans-serif;font-size:1.75rem;font-weight:800;color:var(--primary);">50+</span><p class="mb-0" style="font-size:.8rem;color:var(--text-muted);">Free Resources</p></div>
+<div class="col-4"><span style="font-family:'Outfit',sans-serif;font-size:1.75rem;font-weight:800;color:var(--secondary);">25K+</span><p class="mb-0" style="font-size:.8rem;color:var(--text-muted);">Downloads</p></div>
+<div class="col-4"><span style="font-family:'Outfit',sans-serif;font-size:1.75rem;font-weight:800;color:var(--success);">100%</span><p class="mb-0" style="font-size:.8rem;color:var(--text-muted);">Free</p></div>
+</div>
+</div>
+</section>
+<!-- RESOURCES -->
+<section class="tm-section">
+<div class="container">
+<!-- Search + Filter -->
+<div class="d-flex flex-wrap gap-3 align-items-center mb-4">
+<div class="tm-search-bar flex-grow-1" style="max-width:380px;">
+<i class="bi bi-search"></i>
+<input class="form-control" id="resourceSearch" placeholder="Search resources..." type="text"/>
+</div>
+<div class="tm-filter-tabs mb-0" data-filter-group="type" role="tablist" style="margin-bottom:0!important;">
+<button class="tm-filter-tab active" data-filter-target="all" role="tab">All</button>
+<button class="tm-filter-tab" data-filter-target="PDF"><i class="bi bi-file-pdf me-1" style="color:#ef4444;"></i>PDF</button>
+<button class="tm-filter-tab" data-filter-target="Excel"><i class="bi bi-file-earmark-excel me-1" style="color:#10b981;"></i>Excel</button>
+<button class="tm-filter-tab" data-filter-target="Video"><i class="bi bi-play-circle me-1" style="color:#3b82f6;"></i>Video</button>
+</div>
+</div>
+<p class="text-muted mb-3" id="resourceCount" style="font-size:.9rem;"></p>
+<div class="row g-4" id="resourcesGrid"></div>
+<div class="tm-no-results d-none" id="noResourceResult">
+<i class="bi bi-search"></i>
+<h5>No resources found.</h5>
+<p>Try a different search or filter.</p>
+<button class="btn btn-outline-primary" onclick="clearResourceFilters()">Show All Resources</button>
+</div>
+</div>
+</section>
+<!-- VIDEO SECTION -->
+<section class="tm-section" style="background:var(--bg-alt);">
+<div class="container">
+<div class="tm-section-head" data-aos=""><div class="tm-section-badge">Free Video Lessons</div><h2>Watch Before You Enroll</h2><p>These free preview videos give you a taste of our teaching style and curriculum quality.</p></div>
+<div class="row g-4" id="freeVideoGrid"></div>
+</div>
+</section>
+<!-- CTA -->
+<section class="tm-cta">
+<div class="container" style="position:relative;z-index:1;text-align:center;">
+<h2>Want the <span class="text-warning">Full Learning</span> Experience?</h2>
+<p>Enroll in a course to get structured curriculum, live classes, assignments, mock portfolio access, and your certificate.</p>
+<div class="d-flex flex-wrap justify-content-center gap-3">
+<a class="btn btn-cta btn-lg" href="courses.html"><i class="bi bi-book me-2"></i>Browse Courses</a>
+<a class="btn btn-cta-outline btn-lg" href="pricing.html"><i class="bi bi-tag me-2"></i>View Pricing</a>
+</div>
+</div>
+</section>
+<!-- ====""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+     FOOTER
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""==== -->
+<footer class="tm-footer">
+<div class="container">
+<div class="row g-4">
+<div class="col-lg-4">
+<a class="footer-brand text-decoration-none" href="index.html">
+<img alt="Trading Academy Logo" src="assets/img/logo.svg" style="height:24px;width:24px;margin-right:8px;"/>TradingAcademy
+        </a>
+<p>India's premier stock market trading education platform. Learn from SEBI-registered advisors and build real trading skills.</p>
+<div class="tm-footer-social">
+<a aria-label="Facebook" href="https://facebook.com" rel="noopener" target="_blank"><i class="bi bi-facebook"></i></a>
+<a aria-label="Twitter" href="https://twitter.com" rel="noopener" target="_blank"><i class="bi bi-twitter-x"></i></a>
+<a aria-label="YouTube" href="https://youtube.com" rel="noopener" target="_blank"><i class="bi bi-youtube"></i></a>
+<a aria-label="LinkedIn" href="https://linkedin.com" rel="noopener" target="_blank"><i class="bi bi-linkedin"></i></a>
+<a aria-label="Instagram" href="https://instagram.com" rel="noopener" target="_blank"><i class="bi bi-instagram"></i></a>
+</div>
+<div class="mt-4">
+<h6 class="mb-2 text-white fw-bold" style="font-size:0.75rem;letter-spacing:0.05em;text-transform:uppercase;">Get Free Trading Tips</h6>
+<form class="d-flex w-100" id="newsletterForm" style="max-width:320px;">
+<div class="input-group" style="border-radius:8px; overflow:hidden; border:1px solid rgba(255,255,255,0.15); background:rgba(255,255,255,0.05); align-items:stretch; height:44px;">
+<span class="input-group-text border-0" style="background:transparent; color:rgba(255,255,255,0.6); padding:0 0.75rem 0 1rem; display:flex; align-items:center;">
+<i class="bi bi-envelope"></i>
+</span>
+<input class="form-control border-0 shadow-none" pattern="[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+[.][A-Za-z]{2,}" placeholder="Your email address" required="" style="background:transparent; color:#fff; font-size:0.9rem; padding:0 0.5rem 0 0; display:flex; align-items:center;" title="Enter a valid email address such as name@example.com" type="email"/>
+<button class="btn btn-primary border-0 m-0" style="border-radius:0; padding:0 1.25rem; display:flex; align-items:center; justify-content:center;" type="submit">
+<i class="bi bi-send"></i>
+</button>
+</div>
+</form>
+</div>
+</div>
+<div class="col-6 col-lg-2">
+<h6>Quick Links</h6>
+<ul>
+<li><a href="index.html"><i class="bi bi-chevron-right"></i>Home</a></li>
+<li><a href="about.html"><i class="bi bi-chevron-right"></i>About Us</a></li>
+<li><a href="courses.html"><i class="bi bi-chevron-right"></i>Courses</a></li>
+<li><a href="mentors.html"><i class="bi bi-chevron-right"></i>Mentors</a></li>
+<li><a href="pricing.html"><i class="bi bi-chevron-right"></i>Pricing</a></li>
+<li><a href="contact.html"><i class="bi bi-chevron-right"></i>Contact</a></li>
+</ul>
+</div>
+<div class="col-6 col-lg-2">
+<h6>Courses</h6>
+<ul>
+<li><a href="courses.html?level=Beginner"><i class="bi bi-chevron-right"></i>Beginner</a></li>
+<li><a href="courses.html?level=Intermediate"><i class="bi bi-chevron-right"></i>Intermediate</a></li>
+<li><a href="courses.html?level=Advanced"><i class="bi bi-chevron-right"></i>Advanced</a></li>
+<li><a href="free-resources.html"><i class="bi bi-chevron-right"></i>Free Resources</a></li>
+<li><a href="blog.html"><i class="bi bi-chevron-right"></i>Blog</a></li>
+</ul>
+</div>
+<div class="col-lg-4">
+<h6>Contact Us</h6>
+<ul>
+<li style="display:flex;gap:.5rem;margin-bottom:.5rem;font-size:.875rem;color:#94a3b8;"><i class="bi bi-geo-alt-fill" style="color:#f59e0b;margin-top:3px;flex-shrink:0;"></i>123 Financial District, Bandra Kurla Complex, Mumbai - 400051</li>
+<li><a href="mailto:info@tradingacademy.in"><i class="bi bi-envelope me-2" style="color:#f59e0b;"></i>info@tradingacademy.in</a></li>
+<li><a href="tel:+918001234567"><i class="bi bi-telephone me-2" style="color:#f59e0b;"></i>+91 800 123 4567</a></li>
+<li><a href="contact.html"><i class="bi bi-clock me-2" style="color:#f59e0b;"></i>Mon-Sat: 9 AM - 7 PM IST</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="tm-footer-bottom">
+<div class="container">
+<div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+<p class="mb-0">(c) 2024 Trading Academy. All rights reserved.</p>
+<div class="d-flex gap-3">
+<a href="privacy-policy.html" style="color:#64748b;font-size:.8rem;text-decoration:none;">Privacy Policy</a>
+<a href="terms-of-service.html" style="color:#64748b;font-size:.8rem;text-decoration:none;">Terms of Service</a>
+<a href="refund-policy.html" style="color:#64748b;font-size:.8rem;text-decoration:none;">Refund Policy</a>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/auth.js"></script>
+<script>
+let activeResourceType = 'all';
+let resourceSearchTerm = '';
+
+function renderResources() {
+  const grid  = document.getElementById('resourcesGrid');
+  const noRes = document.getElementById('noResourceResult');
+  const count = document.getElementById('resourceCount');
+
+  let filtered = ACADEMY.resources.filter(r => {
+    const typeMatch   = activeResourceType === 'all' || r.type === activeResourceType;
+    const q           = resourceSearchTerm.toLowerCase();
+    const searchMatch = !q || r.title.toLowerCase().includes(q) || r.description.toLowerCase().includes(q) || r.type.toLowerCase().includes(q);
+    return typeMatch && searchMatch;
+  });
+
+  count.textContent = `Showing ${filtered.length} of ${ACADEMY.resources.length} resources`;
+
+  if (!filtered.length) { grid.innerHTML = ''; noRes.classList.remove('d-none'); return; }
+  noRes.classList.add('d-none');
+
+  const iconMap = { PDF: 'pdf', Excel: 'excel', Video: 'video' };
+
+  grid.innerHTML = filtered.map(r => `
+    <div class="col-md-6 col-lg-4" data-aos>
+      <div class="tm-resource-card h-100" style="flex-direction:column;gap:.75rem;">
+        <div class="d-flex align-items-flex-start gap-3">
+          <div class="tm-resource-icon ${iconMap[r.type] || 'pdf'}">
+            <i class="bi bi-${r.type === 'PDF' ? 'file-earmark-pdf-fill' : r.type === 'Excel' ? 'file-earmark-excel-fill' : 'play-circle-fill'}"></i>
+          </div>
+          <div class="tm-resource-body flex-1" style="flex:1;">
+            <h6>${r.title}</h6>
+            <p>${r.description}</p>
+            <div class="tm-resource-meta">
+              <span class="badge" style="background:var(--bg-alt);color:var(--text-muted);font-size:.72rem;">${r.type}</span>
+              ${r.size ? `<span class="ms-2">${r.size}</span>` : ''}
+              <span class="ms-2">${r.downloads.toLocaleString('en-IN')} downloads</span>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-sm ${r.type === 'Video' ? 'btn-outline-primary' : 'btn-primary'} w-100 mt-auto fw-semibold" onclick="handleResourceDownload('${r.type}', '${r.title.replace(/'/g,"\\'")}')">
+          <i class="bi bi-${r.type === 'Video' ? 'play-circle' : 'download'} me-2"></i>${r.type === 'Video' ? 'Watch Free' : 'Download Free'}
+        </button>
+      </div>
+    </div>`).join('');
+  document.querySelectorAll('[data-aos]:not(.aos-animate)').forEach(el => el.classList.add('aos-animate'));
+}
+
+function renderFreeVideos() {
+  const videos = ACADEMY.resources.filter(r => r.type === 'Video').slice(0, 3);
+  document.getElementById('freeVideoGrid').innerHTML = videos.map(v => `
+    <div class="col-md-4" data-aos>
+      <div class="p-4 rounded-3 text-center" style="background:var(--bg-card);border:1px solid var(--border);">
+        <div style="width:72px;height:72px;background:rgba(59,130,246,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.75rem;color:#3b82f6;">
+          <i class="bi bi-play-circle-fill"></i>
+        </div>
+        <h6 class="mb-2">${v.title}</h6>
+        <p style="font-size:.875rem;color:var(--text-muted);">${v.description}</p>
+        <button class="btn btn-outline-primary btn-sm fw-semibold" onclick="handleResourceDownload('Video','${v.title.replace(/'/g,"\\'")}')" >
+          <i class="bi bi-play-circle me-1"></i>Watch Now
+        </button>
+      </div>
+    </div>`).join('');
+}
+
+function handleResourceDownload(type, title) {
+  if (type === 'Video') {
+    showToast('Opening video: ' + title, 'info');
+  } else {
+    showToast('Downloading "' + title + '"... Check your downloads folder!', 'success');
+  }
+}
+
+function clearResourceFilters() {
+  activeResourceType = 'all';
+  resourceSearchTerm = '';
+  document.getElementById('resourceSearch').value = '';
+  document.querySelectorAll('.tm-filter-tab').forEach(t => t.classList.toggle('active', t.dataset.filterTarget === 'all'));
+  renderResources();
+}
+
+// Filter tabs
+document.querySelectorAll('.tm-filter-tab').forEach(tab => {
+  tab.addEventListener('click', function() {
+    document.querySelectorAll('.tm-filter-tab').forEach(t => t.classList.remove('active'));
+    this.classList.add('active');
+    activeResourceType = this.dataset.filterTarget;
+    renderResources();
+  });
+});
+
+// Search
+document.getElementById('resourceSearch').addEventListener('input', function() {
+  resourceSearchTerm = this.value;
+  renderResources();
+});
+
+function showToast(msg, type) {
+  let c = document.getElementById('tc');
+  if (!c) { c = document.createElement('div'); c.id='tc'; c.className='toast-container position-fixed bottom-0 end-0 p-3'; c.style.zIndex=9999; document.body.appendChild(c); }
+  const m = {success:'bg-success',danger:'bg-danger',warning:'bg-warning text-dark',info:'bg-primary'};
+  const t = document.createElement('div');
+  t.className='toast align-items-center text-white border-0 '+(m[type]||m.info);
+  t.setAttribute('role','alert');
+  t.innerHTML=`<div class="d-flex"><div class="toast-body fw-semibold">${msg}</div><button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button></div>`;
+  c.appendChild(t);
+  new bootstrap.Toast(t,{delay:4000}).show();
+  t.addEventListener('hidden.bs.toast',()=>t.remove());
+}
+
+renderResources();
+renderFreeVideos();
+</script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

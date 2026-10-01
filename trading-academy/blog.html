@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Blog - Trading Academy | Market Insights &amp; Trading Education</title>
+<meta content="Expert articles on stock market trading, technical analysis, risk management, derivatives, and trading psychology from SEBI-registered mentors." name="description"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet"/>
+<link href="assets/css/style.css" rel="stylesheet"/>
+<script src="assets/js/theme.js"></script>
+<link href="assets/img/logo.svg" rel="icon" type="image/svg+xml"/>
+<link href="assets/css/client-review-final.css" rel="stylesheet"/></head>
+<body class="page-blog">
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg tm-navbar fixed-top" id="mainNavbar">
+<div class="container">
+<a class="navbar-brand tm-brand" href="index.html"><img alt="Trading Academy Logo" src="assets/img/logo.svg" style="height:28px; width:28px;"/><span>TradingAcademy</span></a>
+<button class="navbar-toggler border-0" data-bs-target="#navbarContent" data-bs-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarContent">
+<ul class="navbar-nav mx-auto gap-1">
+<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Home</a><ul class="dropdown-menu"><li><a class="dropdown-item" href="index.html">Stock Market Academy</a></li><li><a class="dropdown-item" href="home-2.html">Trading Practice Hub</a></li></ul></li>
+<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+<li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
+<li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
+<li class="nav-item"><a class="nav-link active" href="blog.html">Blog</a></li>
+<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li><li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+</ul>
+<div class="d-flex align-items-center gap-2 navbar-nav-buttons">
+<button class="btn" id="themeToggle"><i class="bi bi-moon-fill" id="themeIcon"></i></button>
+<button aria-label="Switch to RTL layout" class="btn rtl-toggle-control" id="rtlToggle" title="Switch to RTL layout"><span class="rtl-toggle-label">RTL</span></button>
+<a class="btn btn-sm fw-bold px-3 btn-primary" href="login.html" id="authBtn"><i class="bi bi-person me-1"></i>Login</a>
+</div>
+</div>
+</div>
+</nav>
+<!-- PAGE HERO -->
+<section class="tm-page-hero">
+<div class="container" style="position:relative;z-index:1;">
+<nav aria-label="breadcrumb" class="tm-breadcrumb mb-3">
+<ol class="breadcrumb justify-content-center mb-0">
+<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+<li class="breadcrumb-item active">Blog</li>
+</ol>
+</nav>
+<h1 class="mb-3">Market Insights &amp; Trading Education</h1>
+<p class="mb-0">Expert articles from SEBI-registered mentors on trading strategies, market analysis, and investment wisdom</p>
+</div>
+</section>
+<!-- BLOG MAIN -->
+<section class="tm-section">
+<div class="container">
+<div class="row g-4">
+<!-- Blog Grid Column -->
+<div class="col-lg-8">
+<!-- Search -->
+<div class="d-flex gap-2 mb-4">
+<div class="tm-search-bar flex-grow-1">
+<i class="bi bi-search"></i>
+<input class="form-control" id="blogSearch" placeholder="Search articles..." type="text"/>
+</div>
+<button class="btn btn-primary fw-semibold" id="blogSearchBtn">
+<i class="bi bi-search me-1"></i>Search
+          </button>
+</div>
+<!-- Active filters display -->
+<div class="mb-3 d-none" id="activeFiltersRow">
+<small class="text-muted me-2">Filters:</small>
+<span class="badge bg-primary me-1 d-none" id="activeSearchFilter"></span>
+<span class="badge bg-secondary me-1 d-none" id="activeCatFilter"></span>
+<button class="btn btn-sm btn-outline-secondary" onclick="clearAllFilters()">Clear All</button>
+</div>
+<p class="text-muted mb-3" id="blogCount" style="font-size:.9rem;"></p>
+<!-- Blog Grid -->
+<div class="row g-4" id="blogGrid"></div>
+<!-- No results -->
+<div class="tm-no-results d-none" id="noBlogResult">
+<i class="bi bi-search"></i>
+<h5>No blog posts found.</h5>
+<p>Try a different search term or category.</p>
+<button class="btn btn-outline-primary" onclick="clearAllFilters()">Show All Articles</button>
+</div>
+</div>
+<!-- Sidebar -->
+<div class="col-lg-4">
+<!-- Categories -->
+<div class="bg-card border rounded-3 p-4 mb-4" style="border-color:var(--border)!important;">
+<h5 class="mb-3 fw-bold">Categories</h5>
+<div id="categoryList"></div>
+</div>
+<!-- Recent Posts -->
+<div class="bg-card border rounded-3 p-4 mb-4" style="border-color:var(--border)!important;">
+<h5 class="mb-3 fw-bold">Recent Articles</h5>
+<div id="recentPosts"></div>
+</div>
+<!-- Tags -->
+<div class="bg-card border rounded-3 p-4" style="border-color:var(--border)!important;">
+<h5 class="mb-3 fw-bold">Popular Tags</h5>
+<div class="d-flex flex-wrap gap-2" id="tagsList"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ====""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+     FOOTER
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""==== -->
+<footer class="tm-footer">
+<div class="container">
+<div class="row g-4">
+<div class="col-lg-4">
+<a class="footer-brand text-decoration-none" href="index.html">
+<img alt="Trading Academy Logo" src="assets/img/logo.svg" style="height:24px;width:24px;margin-right:8px;"/>TradingAcademy
+        </a>
+<p>India's premier stock market trading education platform. Learn from SEBI-registered advisors and build real trading skills.</p>
+<div class="tm-footer-social">
+<a aria-label="Facebook" href="https://facebook.com" rel="noopener" target="_blank"><i class="bi bi-facebook"></i></a>
+<a aria-label="Twitter" href="https://twitter.com" rel="noopener" target="_blank"><i class="bi bi-twitter-x"></i></a>
+<a aria-label="YouTube" href="https://youtube.com" rel="noopener" target="_blank"><i class="bi bi-youtube"></i></a>
+<a aria-label="LinkedIn" href="https://linkedin.com" rel="noopener" target="_blank"><i class="bi bi-linkedin"></i></a>
+<a aria-label="Instagram" href="https://instagram.com" rel="noopener" target="_blank"><i class="bi bi-instagram"></i></a>
+</div>
+<div class="mt-4">
+<h6 class="mb-2 text-white fw-bold" style="font-size:0.75rem;letter-spacing:0.05em;text-transform:uppercase;">Get Free Trading Tips</h6>
+<form class="d-flex w-100" id="newsletterForm" style="max-width:320px;">
+<div class="input-group" style="border-radius:8px; overflow:hidden; border:1px solid rgba(255,255,255,0.15); background:rgba(255,255,255,0.05); align-items:stretch; height:44px;">
+<span class="input-group-text border-0" style="background:transparent; color:rgba(255,255,255,0.6); padding:0 0.75rem 0 1rem; display:flex; align-items:center;">
+<i class="bi bi-envelope"></i>
+</span>
+<input class="form-control border-0 shadow-none" pattern="[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+[.][A-Za-z]{2,}" placeholder="Your email address" required="" style="background:transparent; color:#fff; font-size:0.9rem; padding:0 0.5rem 0 0; display:flex; align-items:center;" title="Enter a valid email address such as name@example.com" type="email"/>
+<button class="btn btn-primary border-0 m-0" style="border-radius:0; padding:0 1.25rem; display:flex; align-items:center; justify-content:center;" type="submit">
+<i class="bi bi-send"></i>
+</button>
+</div>
+</form>
+</div>
+</div>
+<div class="col-6 col-lg-2">
+<h6>Quick Links</h6>
+<ul>
+<li><a href="index.html"><i class="bi bi-chevron-right"></i>Home</a></li>
+<li><a href="about.html"><i class="bi bi-chevron-right"></i>About Us</a></li>
+<li><a href="courses.html"><i class="bi bi-chevron-right"></i>Courses</a></li>
+<li><a href="mentors.html"><i class="bi bi-chevron-right"></i>Mentors</a></li>
+<li><a href="pricing.html"><i class="bi bi-chevron-right"></i>Pricing</a></li>
+<li><a href="contact.html"><i class="bi bi-chevron-right"></i>Contact</a></li>
+</ul>
+</div>
+<div class="col-6 col-lg-2">
+<h6>Courses</h6>
+<ul>
+<li><a href="courses.html?level=Beginner"><i class="bi bi-chevron-right"></i>Beginner</a></li>
+<li><a href="courses.html?level=Intermediate"><i class="bi bi-chevron-right"></i>Intermediate</a></li>
+<li><a href="courses.html?level=Advanced"><i class="bi bi-chevron-right"></i>Advanced</a></li>
+<li><a href="free-resources.html"><i class="bi bi-chevron-right"></i>Free Resources</a></li>
+<li><a href="blog.html"><i class="bi bi-chevron-right"></i>Blog</a></li>
+</ul>
+</div>
+<div class="col-lg-4">
+<h6>Contact Us</h6>
+<ul>
+<li style="display:flex;gap:.5rem;margin-bottom:.5rem;font-size:.875rem;color:#94a3b8;"><i class="bi bi-geo-alt-fill" style="color:#f59e0b;margin-top:3px;flex-shrink:0;"></i>123 Financial District, Bandra Kurla Complex, Mumbai - 400051</li>
+<li><a href="mailto:info@tradingacademy.in"><i class="bi bi-envelope me-2" style="color:#f59e0b;"></i>info@tradingacademy.in</a></li>
+<li><a href="tel:+918001234567"><i class="bi bi-telephone me-2" style="color:#f59e0b;"></i>+91 800 123 4567</a></li>
+<li><a href="contact.html"><i class="bi bi-clock me-2" style="color:#f59e0b;"></i>Mon-Sat: 9 AM - 7 PM IST</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="tm-footer-bottom">
+<div class="container">
+<div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+<p class="mb-0">(c) 2024 Trading Academy. All rights reserved.</p>
+<div class="d-flex gap-3">
+<a href="privacy-policy.html" style="color:#64748b;font-size:.8rem;text-decoration:none;">Privacy Policy</a>
+<a href="terms-of-service.html" style="color:#64748b;font-size:.8rem;text-decoration:none;">Terms of Service</a>
+<a href="refund-policy.html" style="color:#64748b;font-size:.8rem;text-decoration:none;">Refund Policy</a>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/auth.js"></script>
+<script>
+let blogSearchTerm = '';
+let blogActiveCategory = 'all';
+
+// Check URL params
+const urlParams = new URLSearchParams(window.location.search);
+const urlCat = urlParams.get('cat');
+if (urlCat) blogActiveCategory = urlCat;
+
+function renderBlog() {
+  const grid  = document.getElementById('blogGrid');
+  const noRes = document.getElementById('noBlogResult');
+  const count = document.getElementById('blogCount');
+  const activeRow = document.getElementById('activeFiltersRow');
+  const searchBadge = document.getElementById('activeSearchFilter');
+  const catBadge = document.getElementById('activeCatFilter');
+
+  // AND logic: both conditions must match
+  let filtered = ACADEMY.blogs.filter(b => {
+    const q = blogSearchTerm.toLowerCase();
+    const searchMatch = !q || b.title.toLowerCase().includes(q) || b.excerpt.toLowerCase().includes(q) || b.category.toLowerCase().includes(q) || (b.tags || []).some(t => t.toLowerCase().includes(q));
+    const catMatch = blogActiveCategory === 'all' || b.category === blogActiveCategory;
+    return searchMatch && catMatch;
+  });
+
+  count.textContent = `Showing ${filtered.length} of ${ACADEMY.blogs.length} articles`;
+
+  // Active filter badges
+  const hasFilters = blogSearchTerm || blogActiveCategory !== 'all';
+  activeRow.classList.toggle('d-none', !hasFilters);
+  if (blogSearchTerm) { searchBadge.textContent = 'Search: "' + blogSearchTerm + '"'; searchBadge.classList.remove('d-none'); } else { searchBadge.classList.add('d-none'); }
+  if (blogActiveCategory !== 'all') { catBadge.textContent = blogActiveCategory; catBadge.classList.remove('d-none'); } else { catBadge.classList.add('d-none'); }
+
+  if (!filtered.length) {
+    grid.innerHTML = '';
+    noRes.classList.remove('d-none');
+    return;
+  }
+  noRes.classList.add('d-none');
+
+  grid.innerHTML = filtered.map(b => `
+    <div class="col-12" data-aos>
+      <div class="tm-blog-card" style="flex-direction:row;">
+        <div style="flex-shrink:0;overflow:hidden;border-radius:var(--radius) 0 0 var(--radius);width:240px;min-height:180px;" class="d-none d-md-block">
+          <img src="${b.thumbImage}" alt="${b.title}" style="width:240px;height:100%;object-fit:cover;display:block;" loading="lazy"/>
+        </div>
+        <div class="tm-blog-card-body flex-grow-1">
+          <div class="d-md-none mb-2" style="overflow:hidden;border-radius:var(--radius-sm);height:180px;">
+            <img src="${b.thumbImage}" alt="${b.title}" style="width:100%;height:180px;object-fit:cover;" loading="lazy"/>
+          </div>
+          <a class="tm-blog-cat" href="javascript:void(0)" onclick="filterByCategory('${b.category}')" style="cursor:pointer;">${b.category}</a>
+          <div class="tm-blog-meta">
+            <span class="tm-blog-meta-item"><i class="bi bi-calendar3"></i><span>${b.date}</span></span>
+            <span class="tm-blog-meta-sep">•</span>
+            <span class="tm-blog-meta-item"><i class="bi bi-clock"></i><span>${b.readTime}</span></span>
+            <span class="tm-blog-meta-sep">•</span>
+            <span class="tm-blog-meta-item tm-blog-meta-author"><i class="bi bi-person"></i><span>${b.author}</span></span>
+          </div>
+          <h5>${b.title}</h5>
+          <p>${b.excerpt}</p>
+          <a href="blog-details.html?id=${b.id}" class="btn btn-sm btn-outline-primary">Read Article <i class="bi bi-arrow-right ms-1"></i></a>
+        </div>
+      </div>
+    </div>`).join('');
+
+  // Re-animate
+  document.querySelectorAll('[data-aos]:not(.aos-animate)').forEach(el => el.classList.add('aos-animate'));
+}
+
+function renderSidebar() {
+  // Categories with counts
+  const catCounts = {};
+  ACADEMY.blogs.forEach(b => { catCounts[b.category] = (catCounts[b.category] || 0) + 1; });
+
+  const catList = document.getElementById('categoryList');
+  catList.innerHTML = `<div class="d-flex align-items-center justify-content-between py-2 border-bottom" style="border-color:var(--border)!important;cursor:pointer;" onclick="filterByCategory('all')">
+    <span style="font-size:.9rem;color:${blogActiveCategory==='all'?'var(--primary)':'var(--text)'};" class="${blogActiveCategory==='all'?'fw-bold':''}"><i class="bi bi-grid me-2"></i>All Articles</span>
+    <span class="badge bg-primary">${ACADEMY.blogs.length}</span>
+  </div>` + Object.entries(catCounts).map(([cat,cnt]) => `
+    <div class="d-flex align-items-center justify-content-between py-2 border-bottom" style="border-color:var(--border)!important;cursor:pointer;" onclick="filterByCategory('${cat}')">
+      <span style="font-size:.9rem;color:${blogActiveCategory===cat?'var(--primary)':'var(--text)'};" class="${blogActiveCategory===cat?'fw-bold':''}"><i class="bi bi-tag me-2"></i>${cat}</span>
+      <span class="badge" style="background:var(--bg-alt);color:var(--text-muted);">${cnt}</span>
+    </div>`).join('');
+
+  // Recent posts
+  document.getElementById('recentPosts').innerHTML = ACADEMY.blogs.slice(0,4).map(b => `
+    <div class="d-flex gap-2 mb-3 align-items-center">
+      <img src="${b.thumbImage}" alt="${b.title}" style="width:60px;height:45px;object-fit:cover;border-radius:6px;flex-shrink:0;" loading="lazy"/>
+      <div>
+        <a href="blog-details.html?id=${b.id}" style="font-size:.85rem;font-weight:600;color:var(--text);text-decoration:none;line-height:1.3;display:block;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text)'">${b.title}</a>
+        <small style="color:var(--text-muted);font-size:.75rem;">${b.date}</small>
+      </div>
+    </div>`).join('');
+
+  // Tags
+  const tags = [...new Set(ACADEMY.blogs.flatMap(b => b.tags))];
+  document.getElementById('tagsList').innerHTML = tags.map(t =>
+    `<span class="badge" style="background:var(--bg-alt);color:var(--text-muted);cursor:pointer;font-weight:500;font-size:.78rem;padding:.35rem .7rem;" onclick="filterByTag('${t}')" onmouseover="this.style.background='var(--primary)';this.style.color='#fff'" onmouseout="this.style.background='var(--bg-alt)';this.style.color='var(--text-muted)'">${t}</span>`
+  ).join('');
+}
+
+function filterByCategory(cat) {
+  blogActiveCategory = cat;
+  renderBlog();
+  renderSidebar();
+}
+
+function filterByTag(tag) {
+  blogSearchTerm = tag;
+  document.getElementById('blogSearch').value = tag;
+  renderBlog();
+  renderSidebar();
+}
+
+function clearAllFilters() {
+  blogSearchTerm    = '';
+  blogActiveCategory = 'all';
+  document.getElementById('blogSearch').value = '';
+  renderBlog();
+  renderSidebar();
+}
+
+// Search
+function doSearch() {
+  blogSearchTerm = document.getElementById('blogSearch').value.trim();
+  renderBlog();
+  renderSidebar();
+}
+
+document.getElementById('blogSearchBtn').addEventListener('click', doSearch);
+document.getElementById('blogSearch').addEventListener('keydown', e => { if(e.key==='Enter') doSearch(); });
+
+// Initial render
+renderBlog();
+renderSidebar();
+</script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
