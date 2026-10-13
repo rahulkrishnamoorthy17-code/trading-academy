@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Coming Soon - Trading Academy</title>
+<meta content="Something exciting is coming soon at Trading Academy. Stay tuned!" name="description"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet"/>
+<link href="assets/css/style.css" rel="stylesheet"/>
+<script src="assets/js/theme.js"></script>
+<style>
+    body { min-height:100vh; display:flex; align-items:center; justify-content:center; text-align:center; background:var(--bg); }
+    .cs-wrap { max-width:560px; padding:2rem; }
+    .cs-icon { font-size:4rem; color:var(--secondary); margin-bottom:1.5rem; animation:pulse 2s ease infinite; }
+    .cs-title { font-size:clamp(1.75rem,5vw,3rem); font-weight:800; margin-bottom:1rem; }
+    .cs-sub   { font-size:1.05rem; color:var(--text-muted); margin-bottom:2.5rem; }
+    .countdown-wrap { display:flex; justify-content:center; gap:1.5rem; margin-bottom:2.5rem; flex-wrap:wrap; }
+    .count-box { text-align:center; min-width:70px; }
+    .count-num { font-family:'Outfit',sans-serif; font-size:2.5rem; font-weight:900; color:var(--primary); line-height:1; display:block; }
+    html.dark-mode .count-num { color:var(--secondary); }
+    .count-label { font-size:.75rem; text-transform:uppercase; letter-spacing:.06em; color:var(--text-muted); font-weight:600; }
+    .count-sep { font-family:'Outfit',sans-serif; font-size:2rem; font-weight:700; color:var(--text-muted); align-self:flex-start; padding-top:.25rem; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.7;transform:scale(1.05)} }
+  </style>
+<link href="assets/img/logo.svg" rel="icon" type="image/svg+xml"/>
+<link href="assets/css/client-review-final.css" rel="stylesheet"/></head>
+<body class="page-coming-soon">
+<div class="cs-wrap">
+<div class="cs-icon"><i class="bi bi-rocket-takeoff-fill"></i></div>
+<a href="index.html" style="text-decoration:none;display:flex;align-items:center;justify-content:center;gap:.5rem;margin-bottom:1.5rem;">
+<img alt="Trading Academy" src="assets/img/logo.svg" style="height:48px;width:auto;"/>
+<span style="font-family:'Outfit',sans-serif;font-weight:800;font-size:1.3rem;color:var(--text);">TradingAcademy</span>
+</a>
+<h1 class="cs-title">Something Exciting is Coming</h1>
+<p class="cs-sub">We're working hard to bring you the best stock market trading education platform. Be the first to know when we launch.</p>
+<div class="countdown-wrap" id="countdown">
+<div class="count-box"><span class="count-num" id="cd-days">00</span><span class="count-label">Days</span></div>
+<div class="count-sep">:</div>
+<div class="count-box"><span class="count-num" id="cd-hours">00</span><span class="count-label">Hours</span></div>
+<div class="count-sep">:</div>
+<div class="count-box"><span class="count-num" id="cd-mins">00</span><span class="count-label">Mins</span></div>
+<div class="count-sep">:</div>
+<div class="count-box"><span class="count-num" id="cd-secs">00</span><span class="count-label">Secs</span></div>
+</div>
+<form class="d-flex gap-2 justify-content-center mb-3" id="notifyForm" style="max-width:420px;margin:0 auto 1.5rem;">
+<input class="form-control" pattern="[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+[.][A-Za-z]{2,}" placeholder="Enter your email" required="" style="background:var(--bg-input);border:1.5px solid var(--border);color:var(--text);border-radius:8px;" title="Enter a valid email address such as name@example.com" type="email"/>
+<button class="btn btn-primary fw-bold" style="white-space:nowrap;min-width:100px;" type="submit">Notify Me</button>
+</form>
+<a class="btn btn-outline-primary" href="index.html">
+<i class="bi bi-arrow-left me-2"></i>Back to Home
+  </a>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Countdown: 30 days from now
+  const target = new Date();
+  target.setDate(target.getDate() + 30);
+
+  function tick() {
+    const now  = new Date();
+    const diff = target - now;
+    if (diff <= 0) return;
+    const d = Math.floor(diff / 864e5);
+    const h = Math.floor((diff % 864e5) / 36e5);
+    const m = Math.floor((diff % 36e5) / 6e4);
+    const s = Math.floor((diff % 6e4) / 1e3);
+    document.getElementById('cd-days').textContent  = String(d).padStart(2,'0');
+    document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-mins').textContent  = String(m).padStart(2,'0');
+    document.getElementById('cd-secs').textContent  = String(s).padStart(2,'0');
+  }
+
+  tick(); setInterval(tick, 1000);
+
+  document.getElementById('notifyForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const email = this.querySelector('input').value;
+    if (email) {
+      this.innerHTML = '<p class="text-success fw-semibold mb-0"><i class="bi bi-check-circle me-2"></i>You\'re on the list! We\'ll notify you at ' + email + '</p>';
+    }
+  });
+</script>
+</body>
+</html>
